@@ -1,0 +1,15 @@
+{
+  "contractName": "HouseRWA",
+  "version": "1.0.0",
+  "implementationAddress": "0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7",
+  "proxyAddress": "0xB902E71b6a1Eb23F014935cFBF406D22e7797e04",
+  "receiverAddress": "0x148305fA115Af374e627F31B79265438D7B47a7b",
+  "creForwarderAddress": "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658",
+  "deployer": "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658",
+  "creWorkflowAddress": "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658",
+  "feeRecipient": "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658",
+  "strictMode": false,
+  "timestamp": 1771641276,
+  "chainId": 11155111,
+  "network": "sepolia"
+}

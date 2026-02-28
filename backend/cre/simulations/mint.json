@@ -1,0 +1,23 @@
+{
+  "action": "mint",
+  "ownerAddress": "0x1111111111111111111111111111111111111111",
+  "houseId": "SIM-HOUSE-001",
+  "kycProvider": "mock",
+  "documentsB64": "U0lNLURPQ1VNRU5ULURBVEE=",
+  "storageType": "ipfs",
+  "ownerPublicKey": "0401010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101",
+  "metadata": {
+    "address": "123 Neon District",
+    "city": "Metropolis",
+    "state": "NY",
+    "zipCode": "10001",
+    "country": "USA",
+    "propertyType": "single_family",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "squareFeet": 1450,
+    "yearBuilt": 2018,
+    "description": "Simulation property",
+    "images": []
+  }
+}

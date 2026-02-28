@@ -1,0 +1,28 @@
+{
+  "evmChain": "ethereum-testnet-sepolia",
+  "evmChainID": 11155111,
+  "houseRWAContractAddr": "0x990e1EB2Dd8fA8007533Ab50bE262A44EEF172ee",
+  "houseRWAReceiverAddr": "0x65844014526C32Ef8e68a80CD99a01aA4588D5BA",
+  "rpcURL": "https://evocative-small-bird.ethereum-sepolia.quiknode.pro/38ca28b7747744352436438893b2cdb3446b94ae",
+  "gasLimit": 500000,
+  "gasPrice": "",
+  "maxGasPrice": "100000000000",
+  "stripeAPIBaseURL": "https://api.stripe.com/v1",
+  "ipfsGateway": "https://ipfs.io",
+  "trustedProviders": [
+    "0xabcdef1234567890abcdef1234567890abcdef12"
+  ],
+  "validatorAddress": "0x1234567890123456789012345678901234567890",
+  "autoPayThreshold": 1000.0,
+  "keyExpiryDuration": "24h",
+  "maxDocumentSize": 10485760,
+  "rateLimitPerMinute": 100,
+  "thresholdKeyThreshold": 3,
+  "thresholdKeyTotal": 5,
+  "enableTEE": true,
+  "enforceKYC": true,
+  "kycProvider": "mock",
+  "kycVerifierURL": "",
+  "requireDONConsensus": true,
+  "logLevel": "info"
+}

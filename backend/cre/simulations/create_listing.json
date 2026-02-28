@@ -1,0 +1,11 @@
+{
+  "action": "create_listing",
+  "tokenID": 0,
+  "ownerAddress": "0x1111111111111111111111111111111111111111",
+  "listingType": "for_sale",
+  "price": "1000000000000000000",
+  "preferredToken": "0x0000000000000000000000000000000000000000",
+  "isPrivateSale": false,
+  "durationDays": 30,
+  "kycProvider": "mock"
+}

@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://auth.privy.io https://*.privy.io; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' blob: data: https: http: https://ipfs.io https://*.ipfs.io https://auth.privy.io https://*.privy.io https://api.qrserver.com; connect-src 'self' https://api.rwa-platform.io https://zkpassport-api-production.up.railway.app https://*.stripe.com https://auth.privy.io https://*.privy.io wss://*.privy.io https://*.walletconnect.com https://*.walletconnect.org https://demo.zkpassport.id https://*.zkpassport.id wss://demo.zkpassport.id wss://bridge.zkpassport.id wss://*.zkpassport.id https://eth-sepolia.g.alchemy.com https://*.g.alchemy.com https://rpc.sepolia.org https://ethereum-sepolia-rpc.publicnode.com https://sepolia.drpc.org; frame-src 'self' https://auth.privy.io https://*.privy.io; frame-ancestors 'self'; base-uri 'self'; form-action 'self'; upgrade-insecure-requests"
+        }
+      ]
+    }
+  ]
+}

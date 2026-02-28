@@ -1,0 +1,58 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="roofGlow" x1="98" y1="120" x2="428" y2="332" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#93C5FD" />
+      <stop offset="0.52" stop-color="#60A5FA" />
+      <stop offset="1" stop-color="#2563EB" />
+    </linearGradient>
+    <linearGradient id="bodyGlow" x1="126" y1="168" x2="396" y2="424" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1E3A8A" />
+      <stop offset="1" stop-color="#1D4ED8" />
+    </linearGradient>
+    <linearGradient id="windowGlow" x1="186" y1="278" x2="328" y2="394" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E0F2FE" />
+      <stop offset="1" stop-color="#93C5FD" />
+    </linearGradient>
+    <filter id="shadow" x="18" y="34" width="476" height="456" filterUnits="userSpaceOnUse">
+      <feOffset dy="12" />
+      <feGaussianBlur stdDeviation="18" />
+      <feColorMatrix type="matrix" values="0 0 0 0 0.0118 0 0 0 0 0.0824 0 0 0 0 0.1961 0 0 0 0.42 0" />
+      <feBlend in2="SourceGraphic" result="shape" />
+    </filter>
+  </defs>
+
+  <g filter="url(#shadow)">
+    <path
+      d="M76 230.5L248.5 98C253.2 94.4 259.8 94.4 264.5 98L437 230.5C444.3 236.1 444.8 247 438.2 253.3C433.6 257.7 426.9 259 421 256.9L256.8 197.3C256.3 197.1 255.7 197.1 255.2 197.3L91 256.9C83.7 259.5 75.6 256.9 71.3 250.8C66.3 243.5 67.9 233.4 76 230.5Z"
+      fill="url(#roofGlow)"
+    />
+
+    <path
+      d="M123.5 221.5C123.5 212.9 130.4 206 139 206H373C381.6 206 388.5 212.9 388.5 221.5V378C388.5 390.4 378.4 400.5 366 400.5H146C133.6 400.5 123.5 390.4 123.5 378V221.5Z"
+      fill="url(#bodyGlow)"
+      stroke="#7DD3FC"
+      stroke-opacity="0.42"
+      stroke-width="3"
+    />
+
+    <path
+      d="M219 292C219 280.4 228.4 271 240 271H272C283.6 271 293 280.4 293 292V400H219V292Z"
+      fill="#0B1630"
+      stroke="#93C5FD"
+      stroke-opacity="0.5"
+      stroke-width="2.5"
+    />
+
+    <rect x="162" y="252" width="42" height="42" rx="8" fill="url(#windowGlow)" fill-opacity="0.88" />
+    <rect x="308" y="252" width="42" height="42" rx="8" fill="url(#windowGlow)" fill-opacity="0.88" />
+
+    <path
+      d="M210 157L256 123L302 157"
+      stroke="#DBEAFE"
+      stroke-opacity="0.92"
+      stroke-width="8"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </g>
+</svg>

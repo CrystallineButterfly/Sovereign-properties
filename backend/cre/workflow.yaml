@@ -1,0 +1,89 @@
+# ==========================================================================
+# RWA House CRE Workflow Configuration
+# ==========================================================================
+# This file configures the Chainlink Runtime Environment (CRE) workflow
+# for the RWA House real estate tokenization platform.
+
+staging-settings:
+  user-workflow:
+    workflow-name: "RWA-House-CRE-staging"
+    description: "RWA House tokenization workflow for Sepolia testnet"
+    version: "1.0.0"
+    
+  workflow-artifacts:
+    workflow-path: "."
+    config-path: "./config/config.staging.json"
+    secrets-path: ""
+    
+  capabilities:
+    http:
+      enabled: true
+      port: 8080
+      rateLimit: 100
+      
+    cron:
+      enabled: true
+      jobs:
+        - name: "automated-payments"
+          schedule: "0 0 * * *"
+          description: "Process automated rental payments daily"
+          
+        - name: "key-cleanup"
+          schedule: "0 */6 * * *"
+          description: "Clean up expired temporary keys"
+          
+        - name: "bill-reminders"
+          schedule: "0 9 * * *"
+          description: "Send bill payment reminders"
+
+production-settings:
+  user-workflow:
+    workflow-name: "RWA-House-CRE-production"
+    description: "RWA House tokenization workflow for Ethereum mainnet"
+    version: "1.0.0"
+    
+  workflow-artifacts:
+    workflow-path: "."
+    config-path: "./config/config.production.json"
+    secrets-path: ""
+    
+  capabilities:
+    http:
+      enabled: true
+      port: 8080
+      rateLimit: 1000
+      tls:
+        enabled: true
+        certPath: "/secrets/tls.crt"
+        keyPath: "/secrets/tls.key"
+      
+    cron:
+      enabled: true
+      jobs:
+        - name: "automated-payments"
+          schedule: "0 0 * * *"
+          description: "Process automated rental payments daily"
+          
+        - name: "key-cleanup"
+          schedule: "0 */6 * * *"
+          description: "Clean up expired temporary keys"
+          
+        - name: "bill-reminders"
+          schedule: "0 9 * * *"
+          description: "Send bill payment reminders"
+          
+    monitoring:
+      metrics:
+        enabled: true
+        endpoint: "/metrics"
+      health:
+        enabled: true
+        endpoint: "/health"
+      
+    security:
+      tee:
+        enabled: true
+        enclaveType: "sgx"
+      don_consensus:
+        enabled: true
+        threshold: 0.67

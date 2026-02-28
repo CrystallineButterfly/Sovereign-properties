@@ -1,0 +1,7 @@
+{
+  "action": "pay_bill",
+  "tokenId": "0",
+  "billIndex": 0,
+  "ownerAddress": "0x1111111111111111111111111111111111111111",
+  "paymentMethod": "crypto"
+}

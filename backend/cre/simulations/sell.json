@@ -1,0 +1,10 @@
+{
+  "action": "sell",
+  "sellerAddress": "0x1111111111111111111111111111111111111111",
+  "buyerAddress": "0x2222222222222222222222222222222222222222",
+  "tokenId": "0",
+  "kycProvider": "mock",
+  "price": "1000000000000000000",
+  "buyerPublicKey": "",
+  "isPrivateSale": false
+}

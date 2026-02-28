@@ -1,0 +1,51 @@
+*.env
+.env.example
+deploy.sh
+secrets.yaml 
+testing/
+testing/deployment
+testing/scripts
+testing/secrets.yaml
+testing/scripts/setup_test_env.sh
+testing/scripts/run-sepolia-cutover.sh
+testing/scripts/deploy-sepolia.sh
+testing/scripts/deploy-sepolia.sh
+check-status.sh
+deploysteps.md
+backend/zkpassport-session-service/.workflow-private-store.json
+backend/zkpassport-session-service/.workflow-private-store.json.tmp
+
+# Ignore all Python scripts/files
+*.py
+
+# Private credentials / key material
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.jks
+*.keystore
+*.crt
+
+# Local private workflow stores
+backend/zkpassport-session-service/.workflow-*.json
+backend/zkpassport-session-service/*.db
+backend/zkpassport-session-service/*.sqlite
+backend/zkpassport-session-service/*.sqlite3
+
+# Heavy generated/build artifacts
+**/node_modules/
+**/.vite/
+**/dist/
+**/out/
+**/broadcast/
+RWA-House-CRE/tmp.wasm
+backend/cre/tmp.wasm
+
+# Large sourcemaps / wasm bundles
+*.map
+*.wasm
+node_modules/
+mobile/

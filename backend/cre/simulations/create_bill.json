@@ -1,0 +1,10 @@
+{
+  "action": "create_bill",
+  "tokenId": "0",
+  "billType": "electricity",
+  "amount": 125.5,
+  "dueDate": "2026-03-01T12:00:00Z",
+  "provider": "0x1111111111111111111111111111111111111111",
+  "isRecurring": false,
+  "recurrenceInterval": 0
+}
