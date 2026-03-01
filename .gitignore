@@ -7,6 +7,10 @@ deploysteps.md
 backend/zkpassport-session-service/.workflow-private-store.json
 backend/zkpassport-session-service/.workflow-private-store.json.tmp
 
+# Private/dev helper scripts with key material or secret placeholders
+testing/scripts/setup_test_env.sh
+testing/scripts/run-anvil-cutover.sh
+
 # Ignore all Python scripts/files
 *.py
 
