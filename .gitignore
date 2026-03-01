@@ -41,3 +41,4 @@ backend/cre/tmp.wasm
 *.wasm
 node_modules/
 mobile/
+.cursor
