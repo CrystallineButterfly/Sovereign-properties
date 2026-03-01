@@ -169,6 +169,21 @@ included in the public submission tree.
 
 ## Evidence
 
+Tracked deployment evidence in the public repo:
+
+- Folder index: [`testing/deployment/`](https://github.com/CrystallineButterfly/Sovereign-properties/tree/main/testing/deployment)
+- Latest CRE + auth smoke summary:
+  - [`cre_auth_smoke_20260227T013400Z.md`](https://github.com/CrystallineButterfly/Sovereign-properties/blob/main/testing/deployment/cre_auth_smoke_20260227T013400Z.md)
+  - [`cre_auth_smoke_20260227T013400Z.log`](https://github.com/CrystallineButterfly/Sovereign-properties/blob/main/testing/deployment/cre_auth_smoke_20260227T013400Z.log)
+- Latest per-action CRE simulation logs:
+  - [`sim_mint_20260227T013400Z.log`](https://github.com/CrystallineButterfly/Sovereign-properties/blob/main/testing/deployment/sim_mint_20260227T013400Z.log)
+  - [`sim_create_listing_20260227T013400Z.log`](https://github.com/CrystallineButterfly/Sovereign-properties/blob/main/testing/deployment/sim_create_listing_20260227T013400Z.log)
+  - [`sim_sell_20260227T013400Z.log`](https://github.com/CrystallineButterfly/Sovereign-properties/blob/main/testing/deployment/sim_sell_20260227T013400Z.log)
+  - [`sim_rent_20260227T013400Z.log`](https://github.com/CrystallineButterfly/Sovereign-properties/blob/main/testing/deployment/sim_rent_20260227T013400Z.log)
+  - [`sim_create_bill_20260227T013400Z.log`](https://github.com/CrystallineButterfly/Sovereign-properties/blob/main/testing/deployment/sim_create_bill_20260227T013400Z.log)
+  - [`sim_pay_bill_20260227T013400Z.log`](https://github.com/CrystallineButterfly/Sovereign-properties/blob/main/testing/deployment/sim_pay_bill_20260227T013400Z.log)
+  - [`sim_claim_key_20260227T013400Z.log`](https://github.com/CrystallineButterfly/Sovereign-properties/blob/main/testing/deployment/sim_claim_key_20260227T013400Z.log)
+
 ### CRE + auth smoke (automated, February 27, 2026, 01:34 UTC)
 
 Generated in a local validation environment from repo root:
