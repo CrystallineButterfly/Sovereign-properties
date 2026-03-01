@@ -4,6 +4,7 @@ deploy.sh
 secrets.yaml 
 check-status.sh
 deploysteps.md
+project.yaml
 backend/zkpassport-session-service/.workflow-private-store.json
 backend/zkpassport-session-service/.workflow-private-store.json.tmp
 
