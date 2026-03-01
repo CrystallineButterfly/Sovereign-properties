@@ -305,19 +305,6 @@ Against `https://zkpassport-api-production.up.railway.app`:
 This confirms that the frontend-connected adapter and Sepolia contract path are
 operating for all hackathon demo flows.
 
-### Contract + workflow checks run
-
-```bash
-cd contracts/evm
-forge build
-forge test -q
-
-cd /home/k42/Auditz/CLH/RWA-Houses
-testing/scripts/run-anvil-cutover.sh
-```
-
----
-
 ## Point-in-time Sepolia Status (February 21, 2026)
 
 Sepolia deployment is complete and verified:
