@@ -1,0 +1,264 @@
+=== Anvil cutover started @ 20260219T044522Z ===
+Starting Anvil on http://127.0.0.1:8545
+Chain=31337, code-size-limit=200000
+Anvil RPC check: chain id 31337
+Using deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+[1/6] Running contract tests
+[2/6] Deploying contracts to Anvil
+No files changed, compilation skipped
+Traces:
+  [15897721] Deploy::run()
+    ├─ [0] VM::envBytes32("PRIVATE_KEY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+    ├─ [0] VM::envOr("CRE_WORKFLOW_ADDRESS", 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envOr("FEE_RECIPIENT", 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envOr("CRE_FORWARDER_ADDRESS", 0x0000000000000000000000000000000000000000) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envOr("CRE_STRICT_MODE", false) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] console::log("=== HouseRWA Deployment ===") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Deployer:", 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("CRE Workflow:", 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("CRE Forwarder:", 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Fee Recipient:", 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Strict Mode:", false) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::startBroadcast(<pk>)
+    │   └─ ← [Return]
+    ├─ [0] console::log("\n1. Deploying HouseRWA implementation...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [14440547] → new HouseRWA@0x5FbDB2315678afecb367f032d93F642f64180aa3
+    │   ├─ emit Initialized(version: 18446744073709551615 [1.844e19])
+    │   └─ ← [Return] 71966 bytes of code
+    ├─ [0] console::log("   Implementation deployed at:", HouseRWA: [0x5FbDB2315678afecb367f032d93F642f64180aa3]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n2. Preparing initialization data...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n3. Deploying ERC1967Proxy...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [282957] → new ERC1967Proxy@0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+    │   ├─ emit Upgraded(implementation: HouseRWA: [0x5FbDB2315678afecb367f032d93F642f64180aa3])
+    │   ├─ [214905] HouseRWA::initialize(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [delegatecall]
+    │   │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266)
+    │   │   ├─ emit Initialized(version: 1)
+    │   │   └─ ← [Stop]
+    │   └─ ← [Return] 212 bytes of code
+    ├─ [0] console::log("   Proxy deployed at:", ERC1967Proxy: [0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n4. Deploying HouseRWAReceiver...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [959981] → new HouseRWAReceiver@0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+    │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266)
+    │   ├─ emit SelectorUpdated(selector: 0x4417f6d1, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x8c0fa44c, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x1ebcde2b, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x2b600ea0, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x9b89d0aa, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x0d740b54, allowed: true)
+    │   └─ ← [Return] 3819 bytes of code
+    ├─ [0] console::log("   Receiver deployed at:", HouseRWAReceiver: [0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [23902] ERC1967Proxy::fallback(HouseRWAReceiver: [0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0])
+    │   ├─ [23428] HouseRWA::authorizeCREWorkflow(HouseRWAReceiver: [0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0]) [delegatecall]
+    │   │   └─ ← [Stop]
+    │   └─ ← [Return]
+    ├─ [0] console::log("   Receiver authorized in HouseRWA") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::stopBroadcast()
+    │   └─ ← [Return]
+    ├─ [0] console::log("\n5. Verification...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1153] ERC1967Proxy::fallback() [staticcall]
+    │   ├─ [679] HouseRWA::owner() [delegatecall]
+    │   │   └─ ← [Return] 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+    │   └─ ← [Return] 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+    ├─ [1116] ERC1967Proxy::fallback() [staticcall]
+    │   ├─ [642] HouseRWA::feeRecipient() [delegatecall]
+    │   │   └─ ← [Return] 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+    │   └─ ← [Return] 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+    ├─ [1488] ERC1967Proxy::fallback(HouseRWAReceiver: [0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0]) [staticcall]
+    │   ├─ [1011] HouseRWA::authorizedCREWorkflows(HouseRWAReceiver: [0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0]) [delegatecall]
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [1488] ERC1967Proxy::fallback(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   ├─ [1011] HouseRWA::authorizedCREWorkflows(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [delegatecall]
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [0] console::log("   All verifications passed!") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n6. Saving deployment info...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::createDir("deployments", true)
+    │   └─ ← [Return]
+    ├─ [0] VM::toString(HouseRWA: [0x5FbDB2315678afecb367f032d93F642f64180aa3]) [staticcall]
+    │   └─ ← [Return] "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    ├─ [0] VM::toString(ERC1967Proxy: [0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512]) [staticcall]
+    │   └─ ← [Return] "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+    ├─ [0] VM::toString(HouseRWAReceiver: [0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0]) [staticcall]
+    │   └─ ← [Return] "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+    ├─ [0] VM::toString(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   └─ ← [Return] "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    ├─ [0] VM::toString(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   └─ ← [Return] "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    ├─ [0] VM::toString(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   └─ ← [Return] "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    ├─ [0] VM::toString(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [staticcall]
+    │   └─ ← [Return] "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"
+    ├─ [0] VM::toString(1771476322 [1.771e9]) [staticcall]
+    │   └─ ← [Return] "1771476322"
+    ├─ [0] VM::toString(31337 [3.133e4]) [staticcall]
+    │   └─ ← [Return] "31337"
+    ├─ [0] VM::toString(31337 [3.133e4]) [staticcall]
+    │   └─ ← [Return] "31337"
+    ├─ [0] VM::toString(1771476322 [1.771e9]) [staticcall]
+    │   └─ ← [Return] "1771476322"
+    ├─ [0] VM::writeFile("deployments/houserwa_31337_1771476322.json", "{\n  \"contractName\": \"HouseRWA\",\n  \"version\": \"1.0.0\",\n  \"implementationAddress\": \"0x5FbDB2315678afecb367f032d93F642f64180aa3\",\n  \"proxyAddress\": \"0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512\",\n  \"receiverAddress\": \"0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0\",\n  \"creForwarderAddress\": \"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266\",\n  \"deployer\": \"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266\",\n  \"creWorkflowAddress\": \"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266\",\n  \"feeRecipient\": \"0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266\",\n  \"strictMode\": false,\n  \"timestamp\": 1771476322,\n  \"chainId\": 31337,\n  \"network\": \"anvil\"\n}")
+    │   └─ ← [Return]
+    ├─ [0] console::log("   Deployment info saved to:", "deployments/houserwa_31337_1771476322.json") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n=== Deployment Complete ===") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("HouseRWA Proxy Address:", ERC1967Proxy: [0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Implementation Address:", HouseRWA: [0x5FbDB2315678afecb367f032d93F642f64180aa3]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Receiver Address:", HouseRWAReceiver: [0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\nIMPORTANT: Use the PROXY address for all interactions!") [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Stop]
+
+
+Script ran successfully.
+
+== Logs ==
+  === HouseRWA Deployment ===
+  Deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  CRE Workflow: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  CRE Forwarder: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Fee Recipient: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+  Strict Mode: false
+  
+1. Deploying HouseRWA implementation...
+     Implementation deployed at: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  
+2. Preparing initialization data...
+  
+3. Deploying ERC1967Proxy...
+     Proxy deployed at: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  
+4. Deploying HouseRWAReceiver...
+     Receiver deployed at: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+     Receiver authorized in HouseRWA
+  
+5. Verification...
+     All verifications passed!
+  
+6. Saving deployment info...
+     Deployment info saved to: deployments/houserwa_31337_1771476322.json
+  
+=== Deployment Complete ===
+  HouseRWA Proxy Address: 0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+  Implementation Address: 0x5FbDB2315678afecb367f032d93F642f64180aa3
+  Receiver Address: 0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+  
+IMPORTANT: Use the PROXY address for all interactions!
+
+## Setting up 1 EVM.
+==========================
+Simulated On-chain Traces:
+
+  [14440547] → new HouseRWA@0x5FbDB2315678afecb367f032d93F642f64180aa3
+    ├─ emit Initialized(version: 18446744073709551615 [1.844e19])
+    └─ ← [Return] 71966 bytes of code
+
+  [285457] → new ERC1967Proxy@0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512
+    ├─ emit Upgraded(implementation: HouseRWA: [0x5FbDB2315678afecb367f032d93F642f64180aa3])
+    ├─ [214905] HouseRWA::initialize(0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266, 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266) [delegatecall]
+    │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266)
+    │   ├─ emit Initialized(version: 1)
+    │   └─ ← [Stop]
+    └─ ← [Return] 212 bytes of code
+
+  [959981] → new HouseRWAReceiver@0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+    ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266)
+    ├─ emit SelectorUpdated(selector: 0x4417f6d1, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x8c0fa44c, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x1ebcde2b, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x2b600ea0, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x9b89d0aa, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x0d740b54, allowed: true)
+    └─ ← [Return] 3819 bytes of code
+
+  [30402] ERC1967Proxy::fallback(HouseRWAReceiver: [0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0])
+    ├─ [25428] HouseRWA::authorizeCREWorkflow(HouseRWAReceiver: [0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0]) [delegatecall]
+    │   └─ ← [Stop]
+    └─ ← [Return]
+
+
+==========================
+
+Chain 31337
+
+Estimated gas price: 2.000000001 gwei
+
+Estimated total gas used for script: 22183536
+
+Estimated amount required: 0.044367072022183536 ETH
+
+==========================
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+
+Transactions saved to: /home/k42/Auditz/CLH/RWA-Houses/contracts/evm/broadcast/Deploy.s.sol/31337/run-latest.json
+
+Sensitive values saved to: /home/k42/Auditz/CLH/RWA-Houses/contracts/evm/cache/Deploy.s.sol/31337/run-latest.json
+
+[3/6] Updating local env/config wiring
+updated /home/k42/Auditz/CLH/RWA-Houses/RWA-House-CRE/config.anvil.json
+updated /home/k42/Auditz/CLH/RWA-Houses/backend/cre/config/config.anvil.json
+[4/6] WASM compile checks
+?   	RWA-House-CRE	[no test files]
+?   	RWA-Houses/backend/cre	[no test files]
+?   	RWA-Houses/backend/cre/config	[no test files]
+?   	RWA-Houses/backend/cre/handlers	[no test files]
+?   	RWA-Houses/backend/cre/pkg/encryption	[no test files]
+?   	RWA-Houses/backend/cre/pkg/evm	[no test files]
+?   	RWA-Houses/backend/cre/pkg/validation	[no test files]
+?   	RWA-Houses/backend/cre/workflows	[no test files]
+[5/6] CRE simulate (anvil-settings)
+Error: failed to load settings: failed to load settings: failed to load workflow settings: error loading config file workflow.yaml: open workflow.yaml: no such file or directory
+Usage:
+  cre workflow simulate <workflow-folder-path> [flags]
+
+Examples:
+cre workflow simulate ./my-workflow
+
+Flags:
+      --broadcast             Broadcast transactions to the EVM (default: false)
+  -g, --engine-logs           Enable non-fatal engine logging
+      --evm-event-index int   EVM trigger log index (0-based) (default -1)
+      --evm-tx-hash string    EVM trigger transaction hash (0x...)
+  -h, --help                  help for simulate
+      --http-payload string   HTTP trigger payload as JSON string or path to JSON file (with or without @ prefix)
+      --non-interactive       Run without prompts; requires --trigger-index and inputs for the selected trigger type
+      --trigger-index int     Index of the trigger to run (0-based) (default -1)
+
+Global Flags:
+  -e, --env string            Path to .env file which contains sensitive info (default ".env")
+  -R, --project-root string   Path to the project root
+  -T, --target string         Use target settings from YAML config
+  -v, --verbose               Run command in VERBOSE mode
+

@@ -1,0 +1,30 @@
+=== CRE + Auth smoke start (20260227T013021Z) ===
+✅ PASS: Loaded .env and exported SECRET_VALUE for CRE simulation
+Starting Anvil at http://127.0.0.1:8545 ...
+✅ PASS: Anvil started successfully
+Starting workflow adapter at http://127.0.0.1:8787 ...
+✅ PASS: Workflow adapter started successfully
+✅ PASS: Resolved signing private key for auth smoke
+✅ PASS: Auth verify returned bearer token
+✅ PASS: Unauthenticated workflow action is blocked (401)
+✅ PASS: Actor mismatch is blocked (403)
+✅ PASS: Authenticated actor can execute allowed action (200 + success=true)
+Running CRE simulation: mint
+✅ PASS: CRE simulation passed: mint
+Running CRE simulation: create_listing
+✅ PASS: CRE simulation passed: create_listing
+Running CRE simulation: sell
+✅ PASS: CRE simulation passed: sell
+Running CRE simulation: rent
+✅ PASS: CRE simulation passed: rent
+Running CRE simulation: create_bill
+✅ PASS: CRE simulation passed: create_bill
+Running CRE simulation: pay_bill
+✅ PASS: CRE simulation passed: pay_bill
+Running CRE simulation: claim_key
+✅ PASS: CRE simulation passed: claim_key
+
+=== Smoke complete ===
+Pass=15 Warn=0 Fail=0
+Summary: /home/k42/Auditz/CLH/RWA-Houses/testing/deployment/cre_auth_smoke_20260227T013021Z.md
+Log: /home/k42/Auditz/CLH/RWA-Houses/testing/deployment/cre_auth_smoke_20260227T013021Z.log

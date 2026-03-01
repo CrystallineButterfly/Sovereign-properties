@@ -1,0 +1,30 @@
+Workflow compiled
+{"time":"2026-02-27T01:30:36.980571327Z","level":"INFO","msg":"starting RWA House CRE workflow"}
+{"time":"2026-02-27T01:30:36.990860462Z","level":"INFO","msg":"starting RWA House CRE workflow"}
+2026-02-27T01:30:36Z [USER LOG] msg="initializing RWA House workflow" chain=ethereum-testnet-sepolia chainId=11155111 houseRWA=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+2026-02-27T01:30:36Z [SIMULATION] Simulator Initialized
+
+2026-02-27T01:30:36Z [SIMULATION] Running trigger trigger=http-trigger@1.0.0-alpha
+{"time":"2026-02-27T01:30:37.004942303Z","level":"INFO","msg":"starting RWA House CRE workflow"}
+2026-02-27T01:30:37Z [USER LOG] msg="initializing RWA House workflow" chain=ethereum-testnet-sepolia chainId=11155111 houseRWA=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+2026-02-27T01:30:37Z [USER LOG] msg="processing action" action=mint
+2026-02-27T01:30:37Z [USER LOG] msg="processing mint" owner=0x1111111111111111111111111111111111111111 houseID=SIM-HOUSE-001
+2026-02-27T01:30:37Z [USER LOG] msg="submitting CRE EVM report" chainSelector=16015286601757825753 evmChain=ethereum-testnet-sepolia receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 gasLimit=1000000 calldataBytes=132
+2026-02-27T01:30:37Z [USER LOG] msg="CRE EVM write reply" chainSelector=16015286601757825753 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 txStatus=TX_STATUS_SUCCESS receiverStatus=RECEIVER_CONTRACT_EXECUTION_STATUS_SUCCESS txHash="" errorMessage=""
+2026-02-27T01:30:37Z [USER LOG] msg="CRE write reply returned empty tx hash (common during local simulation)" chainSelector=16015286601757825753 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+2026-02-27T01:30:37Z [USER LOG] msg="executing CRE EVM call" chainSelector=16015286601757825753 contract=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 calldataBytes=4
+2026-02-27T01:30:37Z [USER LOG] msg="CRE EVM call completed" chainSelector=16015286601757825753 contract=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 resultBytes=0
+2026-02-27T01:30:37Z [USER LOG] msg="nextTokenId read failed before mint (tokenId may be empty in simulation)" error="abi: attempting to unmarshal an empty string while arguments are expected"
+2026-02-27T01:30:37Z [USER LOG] msg="submitting CRE EVM report" chainSelector=16015286601757825753 evmChain=ethereum-testnet-sepolia receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 gasLimit=1000000 calldataBytes=1060
+2026-02-27T01:30:37Z [USER LOG] msg="CRE EVM write reply" chainSelector=16015286601757825753 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 txStatus=TX_STATUS_SUCCESS receiverStatus=RECEIVER_CONTRACT_EXECUTION_STATUS_SUCCESS txHash="" errorMessage=""
+2026-02-27T01:30:37Z [USER LOG] msg="CRE write reply returned empty tx hash (common during local simulation)" chainSelector=16015286601757825753 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+
+Workflow Simulation Result:
+ "eyJzdWNjZXNzIjp0cnVlLCJtZXNzYWdlIjoiaG91c2UgbWludGVkIHN1Y2Nlc3NmdWxseSB3aXRoIHByaXZhdGUgb25jaGFpbiBjb21taXRtZW50IiwiZGF0YSI6eyJkb2N1bWVudEhhc2giOiIweDI1OTIzNzZhYjkwN2YyNTc3ZDhiMTE2OGM2MzBjODNmZTBkZGNlOGU3N2Q1OWYwMDQyYjkyYjA3YzQ1Zjg1YmMiLCJkb2N1bWVudFVSSSI6ImNyZTovL3ByaXZhdGUvMWRiNGI4MzRlOGIwZDY0MmFkZjk1ZTIzZTNkY2FjNTQ3OGNiIiwiaG91c2VJRCI6IlNJTS1IT1VTRS0wMDEiLCJreWNQcm92aWRlciI6Im1vY2siLCJtZXRhZGF0YUNvbW1pdG1lbnQiOiIweGRlOWU3ZGU4ZWNjMjFmZDg0ZDZmY2JiMjBkOGRlYTYxZDhmYTdlZjEyOGMzOTM4NTQzNmI4OGIyMzNkMzlkY2EiLCJzaGFyZXNDb3VudCI6NSwic3RvcmFnZVR5cGUiOiJpcGZzIiwidGhyZXNob2xkIjozLCJ0b2tlbklEIjoiIiwidG9rZW5JZCI6IiJ9LCJlbmNyeXB0ZWRLZXkiOiJIMkRPMFQ1UGQyNWNKaUlrWko0Wkpkdm1xV3kwZ21HNFlta0lBUXFEVWNnPSJ9"
+
+2026-02-27T01:30:37Z [SIMULATION] Execution finished signal received
+2026-02-27T01:30:37Z [SIMULATION] Skipping WorkflowEngineV2
+
+⚠️  Update available! You’re running 1.0.11, but 1.2.0 is the latest.
+Run `cre update` or visit https://github.com/smartcontractkit/cre-cli/releases to upgrade.
+

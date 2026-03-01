@@ -1,21 +1,6 @@
-# RWA Houses (Chainlink CRE Hackathon)
+# Sovereign-Properties (Chainlink CRE Hackathon)
 
-Private real-estate RWA app that tokenizes properties, manages private document handoff, and automates sale/rental/billing workflows through **Chainlink CRE**.
-
-## Submission Requirements (Status)
-
-- **Project description + architecture:** ✅ (this README)
-- **3–5 minute public demo video:** ⚠️ Add URL before submission
-  - `VIDEO_URL_HERE`
-- **Public source code repo URL:** ⚠️ Add URL before submission
-  - `REPO_URL_HERE`
-- **README links to Chainlink files:** ✅ (see [Chainlink File Index](#chainlink-file-index))
-- **Sponsor-specific prize rules followed:** ⚠️ Final check before submit
-- **CRE workflow built + used by project:** ✅
-- **Workflow integrates blockchain + external system/API:** ✅ (EVM + Stripe/KYC verifier)
-- **Successful CRE simulation or live CRE deployment evidence:** ✅ (CRE simulation + Sepolia deploy; see [Evidence](#evidence))
-
----
+Private real-estate RWA platform for tokenization, private document handoff, and CRE-driven sale, rental, and billing workflows.
 
 ## Use Case
 
@@ -44,8 +29,8 @@ This app supports private real-estate operations:
 - CRE EVM writes via receiver contract
 
 ### App
-- **Web:** React + TypeScript + Privy wallet auth
-- **Backend services:** Go workflow runtime + optional ZKPassport + `/workflow/trigger` API adapter
+- **Web:** React + TypeScript + Privy wallet auth + external wallet connectivity
+- **Backend services:** Go workflow runtime + optional ZKPassport verifier + `/workflow/trigger` API adapter
 
 ### External integrations
 - Stripe API path for fiat/billing flow
@@ -140,7 +125,7 @@ These are the project files that implement Chainlink CRE / Chainlink-connected b
 - [`contracts/evm/script/Deploy.s.sol`](contracts/evm/script/Deploy.s.sol)
 - [`contracts/evm/deploy-sepolia.sh`](contracts/evm/deploy-sepolia.sh)
 
-### CRE simulation + cutover scripts
+### CRE simulation payloads
 - [`backend/cre/simulations/mint.json`](backend/cre/simulations/mint.json)
 - [`backend/cre/simulations/create_listing.json`](backend/cre/simulations/create_listing.json)
 - [`backend/cre/simulations/sell.json`](backend/cre/simulations/sell.json)
@@ -148,9 +133,12 @@ These are the project files that implement Chainlink CRE / Chainlink-connected b
 - [`backend/cre/simulations/create_bill.json`](backend/cre/simulations/create_bill.json)
 - [`backend/cre/simulations/pay_bill.json`](backend/cre/simulations/pay_bill.json)
 - [`backend/cre/simulations/claim_key.json`](backend/cre/simulations/claim_key.json)
-- [`testing/scripts/run-anvil-cutover.sh`](testing/scripts/run-anvil-cutover.sh)
-- [`testing/scripts/run-sepolia-cutover.sh`](testing/scripts/run-sepolia-cutover.sh)
-- [`testing/scripts/run-cre-auth-smoke.sh`](testing/scripts/run-cre-auth-smoke.sh)
+
+### Local validation automation used to generate evidence
+
+The evidence below was produced with local project automation during testing.
+Those scripts and generated artifacts are environment-specific and may not be
+included in the public submission tree.
 
 ### App integration surfaces (calls into CRE-backed flows)
 - [`RWA-House-UI/web/src/components/MintHouseForm.tsx`](RWA-House-UI/web/src/components/MintHouseForm.tsx)
@@ -166,13 +154,13 @@ These are the project files that implement Chainlink CRE / Chainlink-connected b
 
 ### CRE + auth smoke (automated, February 27, 2026, 01:34 UTC)
 
-Executed from repo root:
+Generated in a local validation environment from repo root:
 
 ```bash
 ./testing/scripts/run-cre-auth-smoke.sh
 ```
 
-Run artifacts:
+Run artifacts (local validation outputs):
 - `testing/deployment/cre_auth_smoke_20260227T013400Z.md`
 - `testing/deployment/cre_auth_smoke_20260227T013400Z.log`
 
@@ -191,9 +179,9 @@ Observed results:
   - `claim_key` ✅
 - Final summary: `Pass=15 Warn=0 Fail=0`
 
-### Successful CRE workflow simulation (local)
+### Local CRE workflow simulation
 
-- Run artifact summary: `testing/deployment/anvil_cutover_20260219T045410Z.log`
+- Run artifact summary (local output): `testing/deployment/anvil_cutover_20260219T045410Z.log`
 - Includes successful CRE report-based writes, e.g.:
   - `txStatus=TX_STATUS_SUCCESS`
   - `receiverStatus=RECEIVER_CONTRACT_EXECUTION_STATUS_SUCCESS`
@@ -314,7 +302,8 @@ Against `https://zkpassport-api-production.up.railway.app`:
 - `pay_bill` ✅ success  
   `txHash=0x8febc091e2a078f7f9d6d660968621731026f8c21f1812b31dde454124399163`
 
-This confirms the frontend-connected adapter + Sepolia contract path is operating for all hackathon demo flows.
+This confirms that the frontend-connected adapter and Sepolia contract path are
+operating for all hackathon demo flows.
 
 ### Contract + workflow checks run
 
@@ -329,7 +318,7 @@ testing/scripts/run-anvil-cutover.sh
 
 ---
 
-## Current Sepolia Status (as of February 21, 2026)
+## Point-in-time Sepolia Status (February 21, 2026)
 
 Sepolia deployment is complete and verified:
 
@@ -345,14 +334,14 @@ To use CRE-driven listing/price actions (`create_listing`), deploy a build that 
 
 ---
 
-## Local Run (fast path)
+## Local Run (fast path, local validation environment)
 
 ```bash
 cd /home/k42/Auditz/CLH/RWA-Houses
 testing/scripts/run-anvil-cutover.sh
 ```
 
-This performs:
+This local validation flow performs:
 - local Anvil deployment
 - CRE workflow simulation
 - env/config wiring
@@ -530,9 +519,3 @@ Use the generated private key as `PRIVATE_KEY`, fund that address with Sepolia E
 - `backend/cre/` — backend CRE handlers/workflows
 - `RWA-House-UI/web/` — web app
 - `testing/` — integration/security tests and cutover scripts
-
----
-
-## docs.md
-
-Additional lightweight notes can be kept in [`docs.md`](docs.md).

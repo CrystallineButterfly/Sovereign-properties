@@ -1,0 +1,383 @@
+=== RWA Sepolia + CRE cutover started @ 20260221T023953Z ===
+
+[1/10] Sepolia RPC check
+Sepolia RPC OK (chain id 11155111)
+
+[2/10] Contract tests
+
+[3/10] Contract deployment
+╔══════════════════════════════════════════════════════════════╗
+║                     HouseRWA Sepolia Deploy                 ║
+╚══════════════════════════════════════════════════════════════╝
+
+[0;34mConfiguration[0m
+  Network: Sepolia (11155111)
+  Deployer: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  Fee recipient: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  CRE workflow: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  CRE forwarder: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  Strict mode: false
+
+[0;34mChecking HouseRWA runtime size (EIP-170)...[0m
+[0;32m✓ Runtime size OK (20672 bytes)[0m
+
+[0;34mChecking RPC connectivity...[0m
+[0;32m✓ Sepolia RPC is reachable[0m
+
+[0;34mRunning contract tests...[0m
+[0;32m✓ Tests passed[0m
+
+[0;32m✓ Etherscan verification enabled[0m
+
+[0;34mBroadcasting deployment...[0m
+No files changed, compilation skipped
+Traces:
+  [5175169] Deploy::run()
+    ├─ [0] VM::envBytes32("PRIVATE_KEY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+    ├─ [0] VM::envOr("CRE_WORKFLOW_ADDRESS", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envOr("FEE_RECIPIENT", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envOr("CRE_FORWARDER_ADDRESS", 0x0000000000000000000000000000000000000000) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envOr("CRE_STRICT_MODE", false) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] console::log("=== HouseRWA Deployment ===") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Deployer:", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("CRE Workflow:", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("CRE Forwarder:", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Fee Recipient:", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Strict Mode:", false) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::startBroadcast(<pk>)
+    │   └─ ← [Return]
+    ├─ [0] console::log("\n1. Deploying HouseRWA implementation...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [4162486] → new HouseRWA@0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1
+    │   ├─ emit Initialized(version: 18446744073709551615 [1.844e19])
+    │   └─ ← [Return] 20672 bytes of code
+    ├─ [0] console::log("   Implementation deployed at:", HouseRWA: [0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n2. Preparing initialization data...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n3. Deploying ERC1967Proxy...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [259497] → new ERC1967Proxy@0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50
+    │   ├─ emit Upgraded(implementation: HouseRWA: [0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1])
+    │   ├─ [208979] HouseRWA::initialize(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658, 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658, 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [delegatecall]
+    │   │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658)
+    │   │   ├─ emit Initialized(version: 1)
+    │   │   └─ ← [Stop]
+    │   └─ ← [Return] 130 bytes of code
+    ├─ [0] console::log("   Proxy deployed at:", ERC1967Proxy: [0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n4. Deploying HouseRWAReceiver...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [581717] → new HouseRWAReceiver@0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC
+    │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658)
+    │   ├─ emit SelectorUpdated(selector: 0x4417f6d1, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x8c0fa44c, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x1ebcde2b, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x2b600ea0, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x9b89d0aa, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x0d740b54, allowed: true)
+    │   └─ ← [Return] 1942 bytes of code
+    ├─ [0] console::log("   Receiver deployed at:", HouseRWAReceiver: [0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [23867] ERC1967Proxy::fallback(HouseRWAReceiver: [0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC])
+    │   ├─ [23560] HouseRWA::authorizeCREWorkflow(HouseRWAReceiver: [0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC]) [delegatecall]
+    │   │   └─ ← [Stop]
+    │   └─ ← [Return]
+    ├─ [0] console::log("   Receiver authorized in HouseRWA") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::stopBroadcast()
+    │   └─ ← [Return]
+    ├─ [0] console::log("\n5. Verification...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1592] ERC1967Proxy::fallback() [staticcall]
+    │   ├─ [1285] HouseRWA::owner() [delegatecall]
+    │   │   └─ ← [Return] 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+    │   └─ ← [Return] 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+    ├─ [1186] ERC1967Proxy::fallback() [staticcall]
+    │   ├─ [879] HouseRWA::feeRecipient() [delegatecall]
+    │   │   └─ ← [Return] 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+    │   └─ ← [Return] 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+    ├─ [1261] ERC1967Proxy::fallback(HouseRWAReceiver: [0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC]) [staticcall]
+    │   ├─ [951] HouseRWA::authorizedCREWorkflows(HouseRWAReceiver: [0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC]) [delegatecall]
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [1261] ERC1967Proxy::fallback(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   ├─ [951] HouseRWA::authorizedCREWorkflows(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [delegatecall]
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [0] console::log("   All verifications passed!") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n6. Saving deployment info...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::createDir("deployments", true)
+    │   └─ ← [Return]
+    ├─ [0] VM::toString(HouseRWA: [0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1]) [staticcall]
+    │   └─ ← [Return] "0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1"
+    ├─ [0] VM::toString(ERC1967Proxy: [0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50]) [staticcall]
+    │   └─ ← [Return] "0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50"
+    ├─ [0] VM::toString(HouseRWAReceiver: [0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC]) [staticcall]
+    │   └─ ← [Return] "0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC"
+    ├─ [0] VM::toString(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658"
+    ├─ [0] VM::toString(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658"
+    ├─ [0] VM::toString(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658"
+    ├─ [0] VM::toString(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658"
+    ├─ [0] VM::toString(1771641588 [1.771e9]) [staticcall]
+    │   └─ ← [Return] "1771641588"
+    ├─ [0] VM::toString(11155111 [1.115e7]) [staticcall]
+    │   └─ ← [Return] "11155111"
+    ├─ [0] VM::toString(11155111 [1.115e7]) [staticcall]
+    │   └─ ← [Return] "11155111"
+    ├─ [0] VM::toString(1771641588 [1.771e9]) [staticcall]
+    │   └─ ← [Return] "1771641588"
+    ├─ [0] VM::writeFile("deployments/houserwa_11155111_1771641588.json", "{\n  \"contractName\": \"HouseRWA\",\n  \"version\": \"1.0.0\",\n  \"implementationAddress\": \"0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1\",\n  \"proxyAddress\": \"0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50\",\n  \"receiverAddress\": \"0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC\",\n  \"creForwarderAddress\": \"0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658\",\n  \"deployer\": \"0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658\",\n  \"creWorkflowAddress\": \"0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658\",\n  \"feeRecipient\": \"0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658\",\n  \"strictMode\": false,\n  \"timestamp\": 1771641588,\n  \"chainId\": 11155111,\n  \"network\": \"sepolia\"\n}")
+    │   └─ ← [Return]
+    ├─ [0] console::log("   Deployment info saved to:", "deployments/houserwa_11155111_1771641588.json") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n=== Deployment Complete ===") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("HouseRWA Proxy Address:", ERC1967Proxy: [0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Implementation Address:", HouseRWA: [0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Receiver Address:", HouseRWAReceiver: [0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\nIMPORTANT: Use the PROXY address for all interactions!") [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Return]
+
+
+Script ran successfully.
+
+== Logs ==
+  === HouseRWA Deployment ===
+  Deployer: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  CRE Workflow: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  CRE Forwarder: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  Fee Recipient: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  Strict Mode: false
+  
+1. Deploying HouseRWA implementation...
+     Implementation deployed at: 0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1
+  
+2. Preparing initialization data...
+  
+3. Deploying ERC1967Proxy...
+     Proxy deployed at: 0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50
+  
+4. Deploying HouseRWAReceiver...
+     Receiver deployed at: 0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC
+     Receiver authorized in HouseRWA
+  
+5. Verification...
+     All verifications passed!
+  
+6. Saving deployment info...
+     Deployment info saved to: deployments/houserwa_11155111_1771641588.json
+  
+=== Deployment Complete ===
+  HouseRWA Proxy Address: 0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50
+  Implementation Address: 0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1
+  Receiver Address: 0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC
+  
+IMPORTANT: Use the PROXY address for all interactions!
+
+## Setting up 1 EVM.
+==========================
+Simulated On-chain Traces:
+
+  [4162486] → new HouseRWA@0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1
+    ├─ emit Initialized(version: 18446744073709551615 [1.844e19])
+    └─ ← [Return] 20672 bytes of code
+
+  [261997] → new ERC1967Proxy@0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50
+    ├─ emit Upgraded(implementation: HouseRWA: [0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1])
+    ├─ [208979] HouseRWA::initialize(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658, 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658, 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [delegatecall]
+    │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658)
+    │   ├─ emit Initialized(version: 1)
+    │   └─ ← [Stop]
+    └─ ← [Return] 130 bytes of code
+
+  [581717] → new HouseRWAReceiver@0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC
+    ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658)
+    ├─ emit SelectorUpdated(selector: 0x4417f6d1, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x8c0fa44c, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x1ebcde2b, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x2b600ea0, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x9b89d0aa, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x0d740b54, allowed: true)
+    └─ ← [Return] 1942 bytes of code
+
+  [30367] ERC1967Proxy::fallback(HouseRWAReceiver: [0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC])
+    ├─ [25560] HouseRWA::authorizeCREWorkflow(HouseRWAReceiver: [0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC]) [delegatecall]
+    │   └─ ← [Stop]
+    └─ ← [Return]
+
+
+==========================
+
+Chain 11155111
+
+Estimated gas price: 0.0736439 gwei
+
+Estimated total gas used for script: 7293075
+
+Estimated amount required: 0.0005370904859925 ETH
+
+==========================
+Warning: server returned a null response when a non-null response was expected (2 tries remaining)
+Warning: server returned a null response when a non-null response was expected (2 tries remaining)
+Warning: server returned a null response when a non-null response was expected (1 tries remaining)
+
+
+==========================
+
+ONCHAIN EXECUTION COMPLETE & SUCCESSFUL.
+##
+Start verification for (3) contracts
+Start verifying contract `0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1` deployed on sepolia
+EVM version: cancun
+Compiler version: 0.8.26
+Optimizations:    200
+
+Submitting verification for [src/HouseRWA.sol:HouseRWA] 0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1.
+Warning: Could not detect deployment: Unable to locate ContractCode at 0x2e589f261595dc7212a6cf23fa5c7eb7c61038c1; waiting 5 seconds before trying again (4 tries remaining)
+
+Submitting verification for [src/HouseRWA.sol:HouseRWA] 0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1.
+Warning: Could not detect deployment: Unable to locate ContractCode at 0x2e589f261595dc7212a6cf23fa5c7eb7c61038c1; waiting 5 seconds before trying again (3 tries remaining)
+
+Submitting verification for [src/HouseRWA.sol:HouseRWA] 0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1.
+Warning: Could not detect deployment: Unable to locate ContractCode at 0x2e589f261595dc7212a6cf23fa5c7eb7c61038c1; waiting 5 seconds before trying again (2 tries remaining)
+
+Submitting verification for [src/HouseRWA.sol:HouseRWA] 0x2E589f261595dc7212a6cf23Fa5c7eB7C61038c1.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `yrrzsn715umtqakuh5sedq5pefsx3knxkg2hfrh1xl6avmadq6`
+	URL: https://sepolia.etherscan.io/address/0x2e589f261595dc7212a6cf23fa5c7eb7c61038c1
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Warning: Verification is still pending...; waiting 15 seconds before trying again (7 tries remaining)
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+Start verifying contract `0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50` deployed on sepolia
+EVM version: cancun
+Compiler version: 0.8.26
+Optimizations:    200
+Constructor args: 0000000000000000000000002e589f261595dc7212a6cf23fa5c7eb7c61038c100000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000064c0c53b8b000000000000000000000000bd610cfb6d4d880c03b97b1f0a6a55b49683a658000000000000000000000000bd610cfb6d4d880c03b97b1f0a6a55b49683a658000000000000000000000000bd610cfb6d4d880c03b97b1f0a6a55b49683a65800000000000000000000000000000000000000000000000000000000
+
+Submitting verification for [lib/openzeppelin-contracts/proxy/ERC1967/ERC1967Proxy.sol:ERC1967Proxy] 0xF557Aa1017D0d440D4B022D284AC40f81fDFFe50.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `cw3cfzkckcw9xkgpi884esnsgrivus5e8x8rvybtwe564pplwx`
+	URL: https://sepolia.etherscan.io/address/0xf557aa1017d0d440d4b022d284ac40f81fdffe50
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Warning: Verification is still pending...; waiting 15 seconds before trying again (7 tries remaining)
+Contract verification status:
+Response: `NOTOK`
+Details: `Already Verified`
+Contract source code already verified
+Start verifying contract `0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC` deployed on sepolia
+EVM version: cancun
+Compiler version: 0.8.26
+Optimizations:    200
+Constructor args: 000000000000000000000000f557aa1017d0d440d4b022d284ac40f81fdffe50000000000000000000000000bd610cfb6d4d880c03b97b1f0a6a55b49683a658000000000000000000000000bd610cfb6d4d880c03b97b1f0a6a55b49683a658000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000000000064417f6d1000000000000000000000000000000000000000000000000000000008c0fa44c000000000000000000000000000000000000000000000000000000001ebcde2b000000000000000000000000000000000000000000000000000000002b600ea0000000000000000000000000000000000000000000000000000000009b89d0aa000000000000000000000000000000000000000000000000000000000d740b5400000000000000000000000000000000000000000000000000000000
+
+Submitting verification for [src/HouseRWAReceiver.sol:HouseRWAReceiver] 0x3FDca30EAC64Ec4F65971a0346513c9a361c56CC.
+Submitted contract for verification:
+	Response: `OK`
+	GUID: `e35msjacxpgritxi21cpuayg71mhns3yrne3zmxqhj2mcvwdzl`
+	URL: https://sepolia.etherscan.io/address/0x3fdca30eac64ec4f65971a0346513c9a361c56cc
+Contract verification status:
+Response: `NOTOK`
+Details: `Pending in queue`
+Warning: Verification is still pending...; waiting 15 seconds before trying again (7 tries remaining)
+Contract verification status:
+Response: `OK`
+Details: `Pass - Verified`
+Contract successfully verified
+All (3) contracts were verified!
+
+Transactions saved to: /home/k42/Auditz/CLH/RWA-Houses/contracts/evm/broadcast/Deploy.s.sol/11155111/run-latest.json
+
+Sensitive values saved to: /home/k42/Auditz/CLH/RWA-Houses/contracts/evm/cache/Deploy.s.sol/11155111/run-latest.json
+
+
+[0;32mDeployment artifact:[0m deployments/houserwa_11155111_1771641588.json
+[0;34mUpdate CRE + UI with:[0m
+  - proxyAddress  -> houseRWAContractAddr / VITE_HOUSE_RWA_ADDRESS
+  - receiverAddress -> houseRWAReceiverAddr / VITE_CRE_RECEIVER_ADDRESS
+
+[4/10] Updating CRE config files
+updated /home/k42/Auditz/CLH/RWA-Houses/RWA-House-CRE/config.staging.json
+updated /home/k42/Auditz/CLH/RWA-Houses/backend/cre/config/config.staging.json
+
+[5/10] Updating root and web env files
+
+[6/10] CRE wasm compile checks
+?   	RWA-House-CRE	[no test files]
+?   	RWA-Houses/backend/cre	[no test files]
+?   	RWA-Houses/backend/cre/config	[no test files]
+?   	RWA-Houses/backend/cre/handlers	[no test files]
+?   	RWA-Houses/backend/cre/pkg/encryption	[no test files]
+?   	RWA-Houses/backend/cre/pkg/evm	[no test files]
+?   	RWA-Houses/backend/cre/pkg/validation	[no test files]
+?   	RWA-Houses/backend/cre/workflows	[no test files]
+
+[7/10] CRE auth check
+
+Account details retrieved:
+
+	Email:             fromtc2k42@gmail.com
+	Organization ID:   org_Lx4aTOp0Zpr9XxpM
+	Organization Name: My Org
+
+
+⚠️  Update available! You’re running 1.0.11, but 1.1.0 is the latest.
+Run `cre update` or visit https://github.com/smartcontractkit/cre-cli/releases to upgrade.
+
+
+[8/10] CRE simulate (mint fixture)
+Error: failed to load settings: failed to load settings: failed to load workflow settings: error loading config file workflow.yaml: open workflow.yaml: no such file or directory
+Usage:
+  cre workflow simulate <workflow-folder-path> [flags]
+
+Examples:
+cre workflow simulate ./my-workflow
+
+Flags:
+      --broadcast             Broadcast transactions to the EVM (default: false)
+  -g, --engine-logs           Enable non-fatal engine logging
+      --evm-event-index int   EVM trigger log index (0-based) (default -1)
+      --evm-tx-hash string    EVM trigger transaction hash (0x...)
+  -h, --help                  help for simulate
+      --http-payload string   HTTP trigger payload as JSON string or path to JSON file (with or without @ prefix)
+      --non-interactive       Run without prompts; requires --trigger-index and inputs for the selected trigger type
+      --trigger-index int     Index of the trigger to run (0-based) (default -1)
+
+Global Flags:
+  -e, --env string            Path to .env file which contains sensitive info (default ".env")
+  -R, --project-root string   Path to the project root
+  -T, --target string         Use target settings from YAML config
+  -v, --verbose               Run command in VERBOSE mode
+

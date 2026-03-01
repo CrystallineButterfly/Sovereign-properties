@@ -1,0 +1,9 @@
+=== RWA Sepolia + CRE cutover started @ 20260218T171637Z ===
+
+[1/10] Sepolia RPC check
+Error: error sending request for url (https://ethereum-sepolia-rpc.publicnode.com/)
+
+Context:
+- Error #0: client error (Connect)
+- Error #1: dns error
+- Error #2: failed to lookup address information: Temporary failure in name resolution

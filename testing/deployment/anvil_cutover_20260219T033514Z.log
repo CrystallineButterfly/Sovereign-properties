@@ -1,0 +1,8 @@
+=== Anvil cutover started @ 20260219T033514Z ===
+Starting Anvil on http://127.0.0.1:8545 (chain=31337, code-size-limit=200000)
+Error: error sending request for url (http://127.0.0.1:8545/)
+
+Context:
+- Error #0: client error (Connect)
+- Error #1: tcp open error
+- Error #2: Operation not permitted (os error 1)

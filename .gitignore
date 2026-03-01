@@ -2,14 +2,6 @@
 .env.example
 deploy.sh
 secrets.yaml 
-testing/
-testing/deployment
-testing/scripts
-testing/secrets.yaml
-testing/scripts/setup_test_env.sh
-testing/scripts/run-sepolia-cutover.sh
-testing/scripts/deploy-sepolia.sh
-testing/scripts/deploy-sepolia.sh
 check-status.sh
 deploysteps.md
 backend/zkpassport-session-service/.workflow-private-store.json

@@ -1,0 +1,14 @@
+[profile.default]
+src = "../contracts/evm/src"
+test = "."
+out = "out"
+libs = ["../contracts/evm/lib"]
+solc = "0.8.26"
+
+remappings = [
+  "src/=../contracts/evm/src/",
+  "forge-std/=../contracts/evm/lib/forge-std/src/",
+  "ds-test/=../contracts/evm/lib/ds-test/src/",
+  "@openzeppelin/contracts/=../contracts/evm/lib/openzeppelin-contracts/",
+  "@openzeppelin/contracts-upgradeable/=../contracts/evm/lib/openzeppelin-contracts-upgradeable/",
+]

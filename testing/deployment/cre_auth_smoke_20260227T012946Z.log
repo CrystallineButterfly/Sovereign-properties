@@ -1,0 +1,8 @@
+=== CRE + Auth smoke start (20260227T012946Z) ===
+✅ PASS: Loaded .env and exported SECRET_VALUE for CRE simulation
+Starting Anvil at http://127.0.0.1:8545 ...
+❌ FAIL: Failed to start Anvil at http://127.0.0.1:8545
+Starting workflow adapter at http://127.0.0.1:8787 ...
+✅ PASS: Workflow adapter started successfully
+Aborting due to startup failures.
+Summary: /home/k42/Auditz/CLH/RWA-Houses/testing/deployment/cre_auth_smoke_20260227T012946Z.md

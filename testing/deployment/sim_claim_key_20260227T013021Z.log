@@ -1,0 +1,22 @@
+Workflow compiled
+{"time":"2026-02-27T01:31:00.071525676Z","level":"INFO","msg":"starting RWA House CRE workflow"}
+{"time":"2026-02-27T01:31:00.078821682Z","level":"INFO","msg":"starting RWA House CRE workflow"}
+2026-02-27T01:31:00Z [USER LOG] msg="initializing RWA House workflow" chain=ethereum-testnet-sepolia chainId=11155111 houseRWA=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+2026-02-27T01:31:00Z [SIMULATION] Simulator Initialized
+
+2026-02-27T01:31:00Z [SIMULATION] Running trigger trigger=http-trigger@1.0.0-alpha
+{"time":"2026-02-27T01:31:00.086657996Z","level":"INFO","msg":"starting RWA House CRE workflow"}
+2026-02-27T01:31:00Z [USER LOG] msg="initializing RWA House workflow" chain=ethereum-testnet-sepolia chainId=11155111 houseRWA=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+2026-02-27T01:31:00Z [USER LOG] msg="processing action" action=claim_key
+2026-02-27T01:31:00Z [USER LOG] msg="executing CRE EVM call" chainSelector=16015286601757825753 contract=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 calldataBytes=36
+2026-02-27T01:31:00Z [USER LOG] msg="CRE EVM call completed" chainSelector=16015286601757825753 contract=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 resultBytes=0
+
+Workflow Simulation Result:
+ "eyJzdWNjZXNzIjpmYWxzZSwibWVzc2FnZSI6ImtleSBleGNoYW5nZSBub3QgZm91bmQifQ=="
+
+2026-02-27T01:31:00Z [SIMULATION] Execution finished signal received
+2026-02-27T01:31:00Z [SIMULATION] Skipping WorkflowEngineV2
+
+⚠️  Update available! You’re running 1.0.11, but 1.2.0 is the latest.
+Run `cre update` or visit https://github.com/smartcontractkit/cre-cli/releases to upgrade.
+

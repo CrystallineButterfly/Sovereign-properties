@@ -1,0 +1,27 @@
+Workflow compiled
+{"time":"2026-02-27T01:34:22.326104998Z","level":"INFO","msg":"starting RWA House CRE workflow"}
+{"time":"2026-02-27T01:34:22.332722261Z","level":"INFO","msg":"starting RWA House CRE workflow"}
+2026-02-27T01:34:22Z [USER LOG] msg="initializing RWA House workflow" chain=ethereum-testnet-sepolia chainId=11155111 houseRWA=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+2026-02-27T01:34:22Z [SIMULATION] Simulator Initialized
+
+2026-02-27T01:34:22Z [SIMULATION] Running trigger trigger=http-trigger@1.0.0-alpha
+{"time":"2026-02-27T01:34:22.339882624Z","level":"INFO","msg":"starting RWA House CRE workflow"}
+2026-02-27T01:34:22Z [USER LOG] msg="initializing RWA House workflow" chain=ethereum-testnet-sepolia chainId=11155111 houseRWA=0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+2026-02-27T01:34:22Z [USER LOG] msg="processing action" action=rent
+2026-02-27T01:34:22Z [USER LOG] msg="processing rental" tokenID=0 renter=0x3333333333333333333333333333333333333333 durationDays=30
+2026-02-27T01:34:22Z [USER LOG] msg="submitting CRE EVM report" chainSelector=16015286601757825753 evmChain=ethereum-testnet-sepolia receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 gasLimit=1000000 calldataBytes=132
+2026-02-27T01:34:22Z [USER LOG] msg="CRE EVM write reply" chainSelector=16015286601757825753 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 txStatus=TX_STATUS_SUCCESS receiverStatus=RECEIVER_CONTRACT_EXECUTION_STATUS_SUCCESS txHash="" errorMessage=""
+2026-02-27T01:34:22Z [USER LOG] msg="CRE write reply returned empty tx hash (common during local simulation)" chainSelector=16015286601757825753 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+2026-02-27T01:34:22Z [USER LOG] msg="submitting CRE EVM report" chainSelector=16015286601757825753 evmChain=ethereum-testnet-sepolia receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 gasLimit=1000000 calldataBytes=260
+2026-02-27T01:34:22Z [USER LOG] msg="CRE EVM write reply" chainSelector=16015286601757825753 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0 txStatus=TX_STATUS_SUCCESS receiverStatus=RECEIVER_CONTRACT_EXECUTION_STATUS_SUCCESS txHash="" errorMessage=""
+2026-02-27T01:34:22Z [USER LOG] msg="CRE write reply returned empty tx hash (common during local simulation)" chainSelector=16015286601757825753 receiver=0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0
+
+Workflow Simulation Result:
+ "eyJzdWNjZXNzIjp0cnVlLCJtZXNzYWdlIjoicmVudGFsIHN0YXJ0ZWQgc3VjY2Vzc2Z1bGx5IiwiZGF0YSI6eyJhY2Nlc3NLZXlIYXNoIjoiMHg0MGJkOWU5NGFiNjE1ZDg2MzI5MjcxNzk3MmVhNWNhZTY4NTE5ODFjMWViMGI3MjFjZjEyYTc1NWE4MGM1ZmUzIiwiZGVwb3NpdEFtb3VudCI6IjI1MDAwMDAwMDAwMDAwMDAwMCIsImR1cmF0aW9uRGF5cyI6MzAsImt5Y1Byb3ZpZGVyIjoibW9jayIsIm1vbnRobHlSZW50IjoiMjUwMDAwMDAwMDAwMDAwMDAwIiwicmVudGVyIjoiMHgzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzMzIiwidG9rZW5JRCI6MH0sImVuY3J5cHRlZEtleSI6IjBxeHV3VlJTK25WZmZkL3FLek9TSVpLY3BZRWdZR0pBWGJrZ29kK1U3VTQ9In0="
+
+2026-02-27T01:34:22Z [SIMULATION] Execution finished signal received
+2026-02-27T01:34:22Z [SIMULATION] Skipping WorkflowEngineV2
+
+⚠️  Update available! You’re running 1.0.11, but 1.2.0 is the latest.
+Run `cre update` or visit https://github.com/smartcontractkit/cre-cli/releases to upgrade.
+

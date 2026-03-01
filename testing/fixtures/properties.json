@@ -1,0 +1,166 @@
+[
+  {
+    "id": "test-property-1",
+    "houseId": "house-001",
+    "address": "123 Test Street, Test City, TC 12345",
+    "price": 100000000,
+    "metadata": {
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "sqft": 2000,
+      "yearBuilt": 2010,
+      "lotSize": 5000
+    },
+    "documents": [
+      {
+        "type": "deed",
+        "hash": "0x7f83b1657ff1fc53b92dc18148a1d65dfc2d4b1fa5d009e00138b3bfa5b6e3c0",
+        "size": 1024,
+        "encrypted": true
+      },
+      {
+        "type": "title_insurance",
+        "hash": "0x8a3b2c1d4e5f6789012345678901234567890abcdef1234567890abcdef123456",
+        "size": 2048,
+        "encrypted": true
+      }
+    ],
+    "owner": "0xSellerAddress123456789",
+    "createdAt": "2024-01-01T00:00:00Z",
+    "updatedAt": "2024-01-01T00:00:00Z"
+  },
+  {
+    "id": "test-property-2",
+    "houseId": "house-002",
+    "address": "456 Luxury Lane, Beverly Hills, CA 90210",
+    "price": 500000000,
+    "metadata": {
+      "bedrooms": 5,
+      "bathrooms": 4,
+      "sqft": 5000,
+      "yearBuilt": 2020,
+      "lotSize": 15000,
+      "pool": true,
+      "garage": 3
+    },
+    "documents": [
+      {
+        "type": "deed",
+        "hash": "0x9a4b3c2d5e6f789012345678901234567890abcdef1234567890abcdef123457",
+        "size": 1024,
+        "encrypted": true
+      },
+      {
+        "type": "appraisal",
+        "hash": "0x1b5c4d3e6f789012345678901234567890abcdef1234567890abcdef123458",
+        "size": 3072,
+        "encrypted": true
+      }
+    ],
+    "owner": "0xHighValueSeller123456789",
+    "createdAt": "2024-01-15T00:00:00Z",
+    "updatedAt": "2024-01-15T00:00:00Z"
+  },
+  {
+    "id": "test-property-3",
+    "houseId": "house-003",
+    "address": "789 Rental Road, Austin, TX 78701",
+    "price": 80000000,
+    "metadata": {
+      "bedrooms": 2,
+      "bathrooms": 2,
+      "sqft": 1200,
+      "yearBuilt": 2015,
+      "lotSize": 3000
+    },
+    "documents": [
+      {
+        "type": "deed",
+        "hash": "0x2c6d5e4f789012345678901234567890abcdef1234567890abcdef123459",
+        "size": 1024,
+        "encrypted": true
+      }
+    ],
+    "owner": "0xRentalOwner123456789",
+    "rentalInfo": {
+      "isRented": true,
+      "renter": "0xRenterAddress123",
+      "monthlyRent": 250000,
+      "deposit": 500000
+    },
+    "createdAt": "2024-02-01T00:00:00Z",
+    "updatedAt": "2024-02-01T00:00:00Z"
+  },
+  {
+    "id": "test-property-4",
+    "houseId": "house-004",
+    "address": "321 Condo Court, Miami, FL 33101",
+    "price": 60000000,
+    "metadata": {
+      "bedrooms": 1,
+      "bathrooms": 1,
+      "sqft": 800,
+      "yearBuilt": 2018,
+      "hoa": true
+    },
+    "documents": [
+      {
+        "type": "deed",
+        "hash": "0x3d7e6f589012345678901234567890abcdef1234567890abcdef123460",
+        "size": 1024,
+        "encrypted": true
+      },
+      {
+        "type": "hoa_agreement",
+        "hash": "0x4e8f7a69012345678901234567890abcdef1234567890abcdef123461",
+        "size": 1536,
+        "encrypted": true
+      }
+    ],
+    "owner": "0xCondoOwner123456789",
+    "bills": [
+      {
+        "type": "hoa_fees",
+        "amount": 50000,
+        "dueDate": "2024-03-01",
+        "status": "pending"
+      },
+      {
+        "type": "property_tax",
+        "amount": 150000,
+        "dueDate": "2024-04-01",
+        "status": "pending"
+      }
+    ],
+    "createdAt": "2024-02-15T00:00:00Z",
+    "updatedAt": "2024-02-15T00:00:00Z"
+  },
+  {
+    "id": "test-property-5",
+    "houseId": "house-005",
+    "address": "555 Commercial Blvd, Seattle, WA 98101",
+    "price": 250000000,
+    "metadata": {
+      "type": "commercial",
+      "sqft": 10000,
+      "yearBuilt": 2012,
+      "units": 5
+    },
+    "documents": [
+      {
+        "type": "deed",
+        "hash": "0x5f9a8b79012345678901234567890abcdef1234567890abcdef123462",
+        "size": 1024,
+        "encrypted": true
+      },
+      {
+        "type": "zoning_permit",
+        "hash": "0x6a0b9c8012345678901234567890abcdef1234567890abcdef123463",
+        "size": 2048,
+        "encrypted": truen      }
+    ],
+    "owner": "0xCommercialOwner123456789",
+    "createdAt": "2024-03-01T00:00:00Z",
+    "updatedAt": "2024-03-01T00:00:00Z"
+  }
+]

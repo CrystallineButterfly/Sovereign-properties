@@ -1,0 +1,227 @@
+=== Anvil cutover started @ 20260221T205726Z ===
+Anvil already running at http://127.0.0.1:8545
+Anvil RPC check: chain id 31337
+Using deployer: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+[1/6] Running contract tests
+[2/6] Deploying contracts to Anvil
+Compiling 1 files with Solc 0.8.26
+Solc 0.8.26 finished in 11.03s
+Compiler run successful!
+Traces:
+  [5263448] Deploy::run()
+    ├─ [0] VM::envBytes32("PRIVATE_KEY") [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::addr(<pk>) [staticcall]
+    │   └─ ← [Return] 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+    ├─ [0] VM::envOr("CRE_WORKFLOW_ADDRESS", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envOr("FEE_RECIPIENT", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envOr("CRE_FORWARDER_ADDRESS", 0x0000000000000000000000000000000000000000) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] VM::envOr("CRE_STRICT_MODE", false) [staticcall]
+    │   └─ ← [Return] <env var value>
+    ├─ [0] console::log("=== HouseRWA Deployment ===") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Deployer:", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("CRE Workflow:", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("CRE Forwarder:", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Fee Recipient:", 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Strict Mode:", false) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::startBroadcast(<pk>)
+    │   └─ ← [Return]
+    ├─ [0] console::log("\n1. Deploying HouseRWA implementation...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [4226372] → new HouseRWA@0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7
+    │   ├─ emit Initialized(version: 18446744073709551615 [1.844e19])
+    │   └─ ← [Return] 20991 bytes of code
+    ├─ [0] console::log("   Implementation deployed at:", HouseRWA: [0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n2. Preparing initialization data...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n3. Deploying ERC1967Proxy...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [259519] → new ERC1967Proxy@0xB902E71b6a1Eb23F014935cFBF406D22e7797e04
+    │   ├─ emit Upgraded(implementation: HouseRWA: [0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7])
+    │   ├─ [209001] HouseRWA::initialize(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658, 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658, 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [delegatecall]
+    │   │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658)
+    │   │   ├─ emit Initialized(version: 1)
+    │   │   └─ ← [Stop]
+    │   └─ ← [Return] 130 bytes of code
+    ├─ [0] console::log("   Proxy deployed at:", ERC1967Proxy: [0xB902E71b6a1Eb23F014935cFBF406D22e7797e04]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n4. Deploying HouseRWAReceiver...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [605681] → new HouseRWAReceiver@0x148305fA115Af374e627F31B79265438D7B47a7b
+    │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658)
+    │   ├─ emit SelectorUpdated(selector: 0x4417f6d1, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x8c0fa44c, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x1ebcde2b, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x2b600ea0, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x9b89d0aa, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x0d740b54, allowed: true)
+    │   ├─ emit SelectorUpdated(selector: 0x8779cb45, allowed: true)
+    │   └─ ← [Return] 1942 bytes of code
+    ├─ [0] console::log("   Receiver deployed at:", HouseRWAReceiver: [0x148305fA115Af374e627F31B79265438D7B47a7b]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [23867] ERC1967Proxy::fallback(HouseRWAReceiver: [0x148305fA115Af374e627F31B79265438D7B47a7b])
+    │   ├─ [23560] HouseRWA::authorizeCREWorkflow(HouseRWAReceiver: [0x148305fA115Af374e627F31B79265438D7B47a7b]) [delegatecall]
+    │   │   └─ ← [Stop]
+    │   └─ ← [Return]
+    ├─ [0] console::log("   Receiver authorized in HouseRWA") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::stopBroadcast()
+    │   └─ ← [Return]
+    ├─ [0] console::log("\n5. Verification...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [1614] ERC1967Proxy::fallback() [staticcall]
+    │   ├─ [1307] HouseRWA::owner() [delegatecall]
+    │   │   └─ ← [Return] 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+    │   └─ ← [Return] 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+    ├─ [1186] ERC1967Proxy::fallback() [staticcall]
+    │   ├─ [879] HouseRWA::feeRecipient() [delegatecall]
+    │   │   └─ ← [Return] 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+    │   └─ ← [Return] 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+    ├─ [1261] ERC1967Proxy::fallback(HouseRWAReceiver: [0x148305fA115Af374e627F31B79265438D7B47a7b]) [staticcall]
+    │   ├─ [951] HouseRWA::authorizedCREWorkflows(HouseRWAReceiver: [0x148305fA115Af374e627F31B79265438D7B47a7b]) [delegatecall]
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [1261] ERC1967Proxy::fallback(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   ├─ [951] HouseRWA::authorizedCREWorkflows(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [delegatecall]
+    │   │   └─ ← [Return] true
+    │   └─ ← [Return] true
+    ├─ [0] console::log("   All verifications passed!") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n6. Saving deployment info...") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] VM::createDir("deployments", true)
+    │   └─ ← [Return]
+    ├─ [0] VM::toString(HouseRWA: [0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7]) [staticcall]
+    │   └─ ← [Return] "0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7"
+    ├─ [0] VM::toString(ERC1967Proxy: [0xB902E71b6a1Eb23F014935cFBF406D22e7797e04]) [staticcall]
+    │   └─ ← [Return] "0xB902E71b6a1Eb23F014935cFBF406D22e7797e04"
+    ├─ [0] VM::toString(HouseRWAReceiver: [0x148305fA115Af374e627F31B79265438D7B47a7b]) [staticcall]
+    │   └─ ← [Return] "0x148305fA115Af374e627F31B79265438D7B47a7b"
+    ├─ [0] VM::toString(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658"
+    ├─ [0] VM::toString(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658"
+    ├─ [0] VM::toString(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658"
+    ├─ [0] VM::toString(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [staticcall]
+    │   └─ ← [Return] "0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658"
+    ├─ [0] VM::toString(1771640658 [1.771e9]) [staticcall]
+    │   └─ ← [Return] "1771640658"
+    ├─ [0] VM::toString(31337 [3.133e4]) [staticcall]
+    │   └─ ← [Return] "31337"
+    ├─ [0] VM::toString(31337 [3.133e4]) [staticcall]
+    │   └─ ← [Return] "31337"
+    ├─ [0] VM::toString(1771640658 [1.771e9]) [staticcall]
+    │   └─ ← [Return] "1771640658"
+    ├─ [0] VM::writeFile("deployments/houserwa_31337_1771640658.json", "{\n  \"contractName\": \"HouseRWA\",\n  \"version\": \"1.0.0\",\n  \"implementationAddress\": \"0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7\",\n  \"proxyAddress\": \"0xB902E71b6a1Eb23F014935cFBF406D22e7797e04\",\n  \"receiverAddress\": \"0x148305fA115Af374e627F31B79265438D7B47a7b\",\n  \"creForwarderAddress\": \"0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658\",\n  \"deployer\": \"0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658\",\n  \"creWorkflowAddress\": \"0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658\",\n  \"feeRecipient\": \"0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658\",\n  \"strictMode\": false,\n  \"timestamp\": 1771640658,\n  \"chainId\": 31337,\n  \"network\": \"anvil\"\n}")
+    │   └─ ← [Return]
+    ├─ [0] console::log("   Deployment info saved to:", "deployments/houserwa_31337_1771640658.json") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\n=== Deployment Complete ===") [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("HouseRWA Proxy Address:", ERC1967Proxy: [0xB902E71b6a1Eb23F014935cFBF406D22e7797e04]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Implementation Address:", HouseRWA: [0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("Receiver Address:", HouseRWAReceiver: [0x148305fA115Af374e627F31B79265438D7B47a7b]) [staticcall]
+    │   └─ ← [Stop]
+    ├─ [0] console::log("\nIMPORTANT: Use the PROXY address for all interactions!") [staticcall]
+    │   └─ ← [Stop]
+    └─ ← [Return]
+
+
+Script ran successfully.
+
+== Logs ==
+  === HouseRWA Deployment ===
+  Deployer: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  CRE Workflow: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  CRE Forwarder: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  Fee Recipient: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658
+  Strict Mode: false
+  
+1. Deploying HouseRWA implementation...
+     Implementation deployed at: 0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7
+  
+2. Preparing initialization data...
+  
+3. Deploying ERC1967Proxy...
+     Proxy deployed at: 0xB902E71b6a1Eb23F014935cFBF406D22e7797e04
+  
+4. Deploying HouseRWAReceiver...
+     Receiver deployed at: 0x148305fA115Af374e627F31B79265438D7B47a7b
+     Receiver authorized in HouseRWA
+  
+5. Verification...
+     All verifications passed!
+  
+6. Saving deployment info...
+     Deployment info saved to: deployments/houserwa_31337_1771640658.json
+  
+=== Deployment Complete ===
+  HouseRWA Proxy Address: 0xB902E71b6a1Eb23F014935cFBF406D22e7797e04
+  Implementation Address: 0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7
+  Receiver Address: 0x148305fA115Af374e627F31B79265438D7B47a7b
+  
+IMPORTANT: Use the PROXY address for all interactions!
+
+## Setting up 1 EVM.
+==========================
+Simulated On-chain Traces:
+
+  [4226372] → new HouseRWA@0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7
+    ├─ emit Initialized(version: 18446744073709551615 [1.844e19])
+    └─ ← [Return] 20991 bytes of code
+
+  [262019] → new ERC1967Proxy@0xB902E71b6a1Eb23F014935cFBF406D22e7797e04
+    ├─ emit Upgraded(implementation: HouseRWA: [0xE8B9aaa1856283A47234dBeDb4Cc236b20ADA2d7])
+    ├─ [209001] HouseRWA::initialize(0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658, 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658, 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658) [delegatecall]
+    │   ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658)
+    │   ├─ emit Initialized(version: 1)
+    │   └─ ← [Stop]
+    └─ ← [Return] 130 bytes of code
+
+  [605681] → new HouseRWAReceiver@0x148305fA115Af374e627F31B79265438D7B47a7b
+    ├─ emit OwnershipTransferred(previousOwner: 0x0000000000000000000000000000000000000000, newOwner: 0xbD610Cfb6D4d880C03B97B1f0a6a55B49683a658)
+    ├─ emit SelectorUpdated(selector: 0x4417f6d1, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x8c0fa44c, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x1ebcde2b, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x2b600ea0, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x9b89d0aa, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x0d740b54, allowed: true)
+    ├─ emit SelectorUpdated(selector: 0x8779cb45, allowed: true)
+    └─ ← [Return] 1942 bytes of code
+
+  [30367] ERC1967Proxy::fallback(HouseRWAReceiver: [0x148305fA115Af374e627F31B79265438D7B47a7b])
+    ├─ [25560] HouseRWA::authorizeCREWorkflow(HouseRWAReceiver: [0x148305fA115Af374e627F31B79265438D7B47a7b]) [delegatecall]
+    │   └─ ← [Stop]
+    └─ ← [Return]
+
+
+==========================
+
+Chain 31337
+
+Estimated gas price: 2.000000001 gwei
+
+Estimated total gas used for script: 7414124
+
+Estimated amount required: 0.014828248007414124 ETH
+
+==========================
+
+Transactions saved to: /home/k42/Auditz/CLH/RWA-Houses/contracts/evm/broadcast/Deploy.s.sol/31337/run-latest.json
+
+Sensitive values saved to: /home/k42/Auditz/CLH/RWA-Houses/contracts/evm/cache/Deploy.s.sol/31337/run-latest.json
+
+Error: Failed to send transaction after 4 attempts Err(server returned an error response: error code -32003: Insufficient funds for gas * price + value)

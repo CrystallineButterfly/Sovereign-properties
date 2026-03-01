@@ -1,0 +1,6 @@
+[zkpassport-session-service] listening on 0.0.0.0:8787 (domain=demo.zkpassport.id)
+[zkpassport-session-service] chain=ethereum_sepolia
+[zkpassport-session-service] bindChain=false bindUserAddress=true
+[zkpassport-session-service] mode=fast
+[zkpassport-session-service] CORS_ORIGIN=*
+[zkpassport-session-service] claims=[{"type":"disclose","field":"birthdate"}]
