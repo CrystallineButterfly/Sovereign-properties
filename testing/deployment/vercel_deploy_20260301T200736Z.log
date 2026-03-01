@@ -1,0 +1,91 @@
+Vercel CLI 50.22.1
+Retrieving project…
+Deploying k42s-projects/sovereign-properties
+Uploading [--------------------] (0.0B/27.8MB)
+Uploading [=====---------------] (7.0MB/27.8MB)
+Uploading [==========----------] (13.9MB/27.8MB)
+Uploading [===============-----] (20.8MB/27.8MB)
+Uploading [====================] (27.8MB/27.8MB)
+Inspect: https://vercel.com/k42s-projects/sovereign-properties/ENLFXyCo6qruJZXvWhPRkGg6UzLE [2m]
+Production: https://sovereign-properties-2xqv2wxo2-k42s-projects.vercel.app [2m]
+https://sovereign-properties-2xqv2wxo2-k42s-projects.vercel.appBuilding...
+Building...
+Building: Running build in Washington, D.C., USA (East) – iad1
+Building: Build machine configuration: 2 cores, 8 GB
+Building: Retrieving list of deployment files...
+Building: Previous build caches not available.
+Building: Downloading 186 deployment files...
+Building: Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: https://vercel.link/node-version
+Building: Running "vercel build"
+Building: Vercel CLI 50.23.2
+Building: Warning: Detected "engines": { "node": ">=18.0.0" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: https://vercel.link/node-version
+Building: Installing dependencies...
+Building: npm warn deprecated yaeti@0.0.6: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+Building: npm warn deprecated whatwg-encoding@3.1.1: Use @exodus/bytes instead for a more spec-conformant and faster implementation
+Building: npm warn deprecated rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+Building: npm warn deprecated inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+Building: npm warn deprecated glob@7.2.3: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me
+Building: npm warn deprecated boolean@3.2.0: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+Building: npm warn deprecated @simplewebauthn/types@9.0.1: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
+Building: npm warn deprecated @humanwhocodes/config-array@0.13.0: Use @eslint/config-array instead
+Building: npm warn deprecated @humanwhocodes/object-schema@2.0.3: Use @eslint/object-schema instead
+Building: npm warn deprecated @paulmillr/qr@0.2.1: The package is now available as "qr": npm install qr
+Building: npm warn deprecated @walletconnect/modal@2.7.0: Please follow the migration guide on https://docs.reown.com/appkit/upgrade/wcm
+Building: npm warn deprecated @motionone/vue@10.16.4: Motion One for Vue is deprecated. Use Oku Motion instead https://oku-ui.com/motion
+Building: npm warn deprecated @walletconnect/sign-client@2.21.1: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+Building: npm warn deprecated @walletconnect/sign-client@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+Building: npm warn deprecated @walletconnect/sign-client@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+Building: npm warn deprecated @walletconnect/sign-client@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+Building: npm warn deprecated @walletconnect/universal-provider@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+Building: npm warn deprecated @walletconnect/universal-provider@2.21.1: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+Building: npm warn deprecated @walletconnect/universal-provider@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+Building: npm warn deprecated @walletconnect/universal-provider@2.21.0: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+Building: npm warn deprecated @walletconnect/ethereum-provider@2.21.1: Reliability and performance improvements. See: https://github.com/WalletConnect/walletconnect-monorepo/releases
+Building: npm warn deprecated eslint@8.57.1: This version is no longer supported. Please see https://eslint.org/version-support for other options.
+Building: > rwa-house-web@1.0.0 prepare
+Building: > husky install
+Building: husky - install command is DEPRECATED
+Building: .git can't be found
+Building: added 1423 packages in 44s
+Building: 289 packages are looking for funding
+Building: run `npm fund` for details
+Building: Running "npm run build"
+Building: > rwa-house-web@1.0.0 build
+Building: > tsc && vite build
+Building: src/components/AuthProvider.tsx(26,52): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/components/AuthProvider.tsx(27,49): error TS2307: Cannot find module '../../../shared/src/types' or its corresponding type declarations.
+Building: src/components/AuthProvider.tsx(826,14): error TS7006: Parameter 'previous' implicitly has an 'any' type.
+Building: src/components/Dashboard.tsx(14,8): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/components/Dashboard.tsx(19,8): error TS2307: Cannot find module '../../../shared/src/types' or its corresponding type declarations.
+Building: src/components/Dashboard.tsx(341,29): error TS7006: Parameter 'previous' implicitly has an 'any' type.
+Building: src/components/Dashboard.tsx(531,29): error TS7006: Parameter 'previous' implicitly has an 'any' type.
+Building: src/components/DocumentsView.tsx(5,27): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/components/HouseDetails.tsx(4,27): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/components/HouseDetails.tsx(16,8): error TS2307: Cannot find module '../../../shared/src/types' or its corresponding type declarations.
+Building: src/components/HouseDetails.tsx(433,8): error TS7006: Parameter 'left' implicitly has an 'any' type.
+Building: src/components/HouseDetails.tsx(433,14): error TS7006: Parameter 'right' implicitly has an 'any' type.
+Building: src/components/HouseDetails.tsx(1869,45): error TS7006: Parameter 'message' implicitly has an 'any' type.
+Building: src/components/HouseThumbnail.tsx(3,28): error TS2307: Cannot find module '../../../shared/src/types' or its corresponding type declarations.
+Building: src/components/ListingForm.tsx(7,27): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/components/MintHouseForm.tsx(9,27): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/components/MintHouseForm.tsx(18,8): error TS2307: Cannot find module '../../../shared/src/utils/security' or its corresponding type declarations.
+Building: src/components/MintHouseForm.tsx(19,49): error TS2307: Cannot find module '../../../shared/src/types' or its corresponding type declarations.
+Building: src/components/MintHouseForm.tsx(497,27): error TS2307: Cannot find module '../../../shared/src/types' or its corresponding type declarations.
+Building: src/components/Navigation.tsx(8,27): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/components/Navigation.tsx(9,35): error TS2307: Cannot find module '../../../shared/src/types' or its corresponding type declarations.
+Building: src/components/Navigation.tsx(83,33): error TS7006: Parameter 'entry' implicitly has an 'any' type.
+Building: src/components/PaymentScreen.tsx(2,27): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/main.tsx(5,27): error TS2307: Cannot find module '@shared/utils/api' or its corresponding type declarations.
+Building: src/pages/ClaimKeyPage.tsx(5,27): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/pages/CreateBillPage.tsx(5,27): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/pages/CreateBillPage.tsx(6,47): error TS2307: Cannot find module '../../../shared/src/types' or its corresponding type declarations.
+Building: src/pages/CreateBillPage.tsx(10,8): error TS2307: Cannot find module '../../../shared/src/utils/security' or its corresponding type declarations.
+Building: src/pages/MarketplacePage.tsx(6,27): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: src/pages/MarketplacePage.tsx(7,28): error TS2307: Cannot find module '../../../shared/src/types' or its corresponding type declarations.
+Building: src/pages/MarketplacePage.tsx(12,8): error TS2307: Cannot find module '../../../shared/src/utils/security' or its corresponding type declarations.
+Building: src/pages/MarketplacePage.tsx(135,29): error TS7006: Parameter 'image' implicitly has an 'any' type.
+Building: src/pages/MarketplacePage.tsx(135,36): error TS7006: Parameter 'index' implicitly has an 'any' type.
+Building: src/pages/ProfilePage.tsx(5,28): error TS2307: Cannot find module '../../../shared/src/types' or its corresponding type declarations.
+Building: src/pages/ProfilePage.tsx(6,27): error TS2307: Cannot find module '../../../shared/src/utils/api' or its corresponding type declarations.
+Building: Error: Command "npm run build" exited with 2
+Error: Command "npm run build" exited with 2

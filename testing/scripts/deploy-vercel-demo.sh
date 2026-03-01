@@ -7,6 +7,7 @@ WEB_DIR="$REPO_ROOT/RWA-House-UI/web"
 LOG_DIR="$REPO_ROOT/testing/deployment"
 TIMESTAMP="$(date -u +"%Y%m%dT%H%M%SZ")"
 LOG_FILE="$LOG_DIR/vercel_deploy_${TIMESTAMP}.log"
+XDG_CACHE_HOME="${XDG_CACHE_HOME:-/tmp/vercel-cache}"
 
 HOUSE_RWA_DEFAULT="0x990e1EB2Dd8fA8007533Ab50bE262A44EEF172ee"
 API_DEFAULT="https://zkpassport-api-production.up.railway.app"
@@ -51,6 +52,8 @@ upsert_vercel_env() {
 
 main() {
   mkdir -p "$LOG_DIR"
+  mkdir -p "$XDG_CACHE_HOME"
+  export XDG_CACHE_HOME
 
   require_command vercel
   require_command npm
@@ -83,6 +86,10 @@ main() {
   fi
   if [[ -n "${VERCEL_SCOPE:-}" ]]; then
     VERCEL_ARGS+=(--scope "$VERCEL_SCOPE")
+  fi
+
+  if ! vercel whoami "${VERCEL_ARGS[@]}" >/dev/null 2>&1; then
+    die "No Vercel credentials. Run 'vercel login' once or export VERCEL_TOKEN and rerun."
   fi
 
   cd "$WEB_DIR"
