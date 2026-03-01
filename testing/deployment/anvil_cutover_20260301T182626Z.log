@@ -1,0 +1,6 @@
+=== Anvil cutover started @ 20260301T182626Z ===
+Starting Anvil on http://127.0.0.1:8545
+Chain=31337, code-size-limit=200000
+Anvil RPC check: chain id 31337
+Using deployer: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+[1/6] Running contract tests

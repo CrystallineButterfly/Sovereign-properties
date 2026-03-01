@@ -9,6 +9,7 @@ This app supports private real-estate operations:
 - Tokenize a property as an onchain RWA asset
 - Create listings (set sale/rent price) through CRE workflow actions
 - Run private sales and rentals
+- Open private XMTP chats between buyer↔seller and renter↔landlord
 - Exchange encrypted access/document keys securely
 - Create/pay recurring bills
 - Apply optional KYC-gated workflow rules
@@ -31,6 +32,7 @@ This app supports private real-estate operations:
 ### App
 - **Web:** React + TypeScript + Privy wallet auth + external wallet connectivity
 - **Backend services:** Go workflow runtime + optional ZKPassport verifier + `/workflow/trigger` API adapter
+- **Messaging:** XMTP wallet-to-wallet private messaging with backend-mirrored unread notifications
 
 ### External integrations
 - Stripe API path for fiat/billing flow
@@ -66,14 +68,22 @@ The project uses a **commitment + encrypted key exchange** model:
    - `claim_key` enforces claimant/recipient matching in workflow/API.
    - The key material exposed by claim paths is ciphertext only.
 
-5. **Session auth for private routes**
+5. **Private buyer/seller and renter/landlord messaging**
+   - Property detail views expose XMTP-based wallet-to-wallet chat for
+     permitted counterparties only.
+   - Conversations are role-gated so only valid participants can open the
+     channel for a given sale or rental flow.
+   - Incoming messages are mirrored into backend notification records and shown
+     in the app bell UI.
+
+6. **Session auth for private routes**
    - `/auth/verify-wallet` verifies wallet signatures and issues signed bearer
      tokens using `WORKFLOW_AUTH_SECRET`.
    - Private house routes and `claim_key` require authenticated callers.
    - Private document content can be configured to require KYC via
      `REQUIRE_KYC_FOR_PRIVATE_DOCUMENTS` (default: `false`).
 
-6. **Optional KYC mode for CRE actions**
+7. **Optional KYC mode for CRE actions**
    - CRE action payloads now accept `kycProvider=none`.
    - In `none` mode, the workflow skips KYC proof verification and skips
      `setKYCVerification` writes.
@@ -87,6 +97,7 @@ The project uses a **commitment + encrypted key exchange** model:
 | Offchain private metadata is encrypted at rest | Private store payload is encrypted (AES-GCM) before persistence | `backend/zkpassport-session-service/workflow-trigger.cjs` (`encryptPrivatePayload`, `decryptPrivatePayload`) |
 | Unauthorized users cannot read private house details from app API | House reads are redacted; private docs/bills endpoints return `403` for non-authorized viewers | `backend/zkpassport-session-service/server.cjs` (`projectHouseForViewer`, `/houses/:id`, `/houses/:id/documents`, `/houses/:id/bills`) |
 | Seller→buyer / landlord→renter key handoff is recipient-bound | `claim_key` validates claimant against intended recipient before returning ciphertext | `backend/zkpassport-session-service/workflow-trigger.cjs` (`handleClaimKey`, claim auth gate), `backend/cre/handlers/http.go` (`handleClaimKey`) |
+| Buyer↔seller / renter↔landlord messaging is private and role-gated | XMTP chat is only enabled for valid counterparties and mirrored to authenticated notification feeds | `RWA-House-UI/web/src/components/HouseDetails.tsx`, `RWA-House-UI/web/src/pages/MarketplacePage.tsx`, `backend/zkpassport-session-service/server.cjs` (`/messages/*`, `/notifications`), `backend/zkpassport-session-service/workflow-trigger.cjs` (`recordNotification`) |
 | Private route access requires authenticated wallet sessions | Wallet signature verification issues signed bearer tokens; private routes parse/verify bearer wallet | `backend/zkpassport-session-service/workflow-trigger.cjs` (`handleVerifyWallet`, token signing/parsing), `backend/zkpassport-session-service/server.cjs` (`extractViewerWalletAddress`) |
 | Anonymous CRE execution is supported | `kycProvider=none` short-circuits KYC verification + onchain KYC writes | `backend/zkpassport-session-service/workflow-trigger.cjs` (`ensureKYCFromPayload`), `backend/cre/handlers/kyc.go`, `backend/cre/handlers/http.go` (`writeKYCVerification`) |
 | CRE mint privacy flow validated in simulation | Manual mint simulate run returned `success: true` with `private onchain commitment` message and CRE write success statuses | Evidence section: **Manual CRE mint privacy simulation (February 23, 2026, 00:28 UTC)** |
@@ -145,8 +156,14 @@ included in the public submission tree.
 - [`RWA-House-UI/web/src/components/ListingForm.tsx`](RWA-House-UI/web/src/components/ListingForm.tsx)
 - [`RWA-House-UI/web/src/pages/MarketplacePage.tsx`](RWA-House-UI/web/src/pages/MarketplacePage.tsx)
 - [`RWA-House-UI/web/src/pages/CreateBillPage.tsx`](RWA-House-UI/web/src/pages/CreateBillPage.tsx)
+- [`RWA-House-UI/web/src/components/HouseDetails.tsx`](RWA-House-UI/web/src/components/HouseDetails.tsx)
+- [`RWA-House-UI/web/src/components/Navigation.tsx`](RWA-House-UI/web/src/components/Navigation.tsx)
 - [`RWA-House-UI/mobile/src/screens/MintScreen.tsx`](RWA-House-UI/mobile/src/screens/MintScreen.tsx)
 - [`RWA-House-UI/mobile/src/screens/MarketplaceScreen.tsx`](RWA-House-UI/mobile/src/screens/MarketplaceScreen.tsx)
+
+### Private messaging + notification surfaces
+- [`backend/zkpassport-session-service/server.cjs`](backend/zkpassport-session-service/server.cjs)
+- [`backend/zkpassport-session-service/workflow-trigger.cjs`](backend/zkpassport-session-service/workflow-trigger.cjs)
 
 ---
 
@@ -324,7 +341,7 @@ To use CRE-driven listing/price actions (`create_listing`), deploy a build that 
 ## Local Run (fast path, local validation environment)
 
 ```bash
-cd /home/k42/Auditz/CLH/RWA-Houses
+cd <repo-root>
 testing/scripts/run-anvil-cutover.sh
 ```
 
@@ -338,7 +355,14 @@ This local validation flow performs:
 
 ## Web API Adapter (`/workflow/trigger` + ZKPassport)
 
-For hackathon demos, the web app can use `backend/zkpassport-session-service` as a lightweight API layer.
+For hackathon demos, the web app uses
+`backend/zkpassport-session-service` as a lightweight API layer for:
+
+- authenticated `/workflow/trigger` calls into CRE-backed flows
+- browser-safe `/rpc` reads
+- wallet session auth and private route protection
+- notification and private messaging sync
+- ZKPassport session + verification endpoints
 
 Start it with:
 
@@ -347,94 +371,27 @@ cd backend/zkpassport-session-service
 HOST=0.0.0.0 PORT=8787 CORS_ORIGIN="http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173" node server.cjs
 ```
 
-Implemented endpoints:
+Key endpoints:
 - `POST /workflow/trigger` (`mint`, `set_kyc`, `create_listing`, `sell`, `rent`, `create_bill`, `pay_bill`, `claim_key`)
 - `POST /rpc` (JSON-RPC proxy to configured Sepolia RPC; recommended for browser-safe onchain reads)
 - `POST /auth/verify-wallet`
 - `POST /auth/refresh`
 - `POST /auth/logout`
+- `GET /notifications`
+- `POST /messages/conversations`
 - `POST /kyc/zkpassport/verify` (frontend proof verification)
 - `POST /kyc/verify` (CRE-style verifier response)
 - `POST /kyc/zkpassport/session`
 - `GET /kyc/zkpassport/session/:sessionId`
 - `GET /healthz`
 
-`/workflow/trigger` KYC behavior by payload:
-- `kycProvider=none` → skip KYC proof + skip onchain KYC write
-- `kycProvider=mock` → mock KYC path writes `setKYCVerification`
-- `kycProvider=zkpassport` → requires `kycProof`, verifies proof, then writes KYC
-
-When running locally, point the UI to this adapter:
+For local frontend use, point the app at this adapter:
 
 - `VITE_API_URL=http://localhost:8787`
 - `VITE_ZKPASSPORT_API_URL=http://localhost:8787`
 - `VITE_RPC_URL=http://localhost:8787/rpc`
 - `VITE_ENABLE_CHAIN_RPC_FALLBACK=false` (recommended for hosted/browser deployments)
-- `VITE_ENABLE_PUBLIC_RPC_CANDIDATES=false` (prevents probing public RPC URLs that may be blocked by CSP)
-
-If you intentionally enable browser direct-RPC fallback, set explicit allowed hosts:
-
-- `VITE_ENABLE_CHAIN_RPC_FALLBACK=true`
-- `VITE_FALLBACK_RPC_URLS=https://your-allowed-rpc.example,https://another-rpc.example`
-
-If your browser still cannot reach `localhost:8787` (common with WSL/VM setups),
-use your machine IP/hostname in `VITE_ZKPASSPORT_API_URL` instead.
-
-If the UI shows `Unable to start ZKPassport flow`, verify:
-- adapter health: `curl http://localhost:8787/healthz`
-- session creation:  
-  `curl -X POST http://localhost:8787/kyc/zkpassport/session -H 'Content-Type: application/json' -d '{"walletAddress":"0x1111111111111111111111111111111111111111"}'`
-
-If the UI shows `ZKPassport proof verification failed`, verify:
-- proof verify endpoint:
-  `curl -X POST http://localhost:8787/kyc/zkpassport/verify -H 'Content-Type: application/json' -d '{"walletAddress":"0x1111111111111111111111111111111111111111","proof":{"proofs":[],"queryResult":{}}}'`
-
-Dev fallback: the Vite app now proxies `/kyc/zkpassport/*` and `/healthz` to
-`http://127.0.0.1:8787` (override with `ZKPASSPORT_PROXY_TARGET`) so local
-button clicks can still work even if direct cross-origin calls are blocked.
-
-### Required env for `/workflow/trigger`
-
-- `WORKFLOW_RPC_URL` (or `CRE_RPC_URL` / `SEPOLIA_RPC`)
-- `WORKFLOW_PRIVATE_KEY` (or `CRE_ETH_PRIVATE_KEY` / `PRIVATE_KEY`)
-- `HOUSE_RWA_CONTRACT_ADDRESS` (Sepolia proxy)
-- `WORKFLOW_AUTH_SECRET` (required for signed session tokens used by private house data routes)
-- `WORKFLOW_MAX_BODY_BYTES` (optional, defaults to `125829120`) for larger mint
-  document payloads from the web form
-- `REQUIRE_KYC_FOR_PRIVATE_DOCUMENTS` (optional, defaults to `false`; set `true`
-  to enforce KYC before private document content can be viewed)
-
-Optional auth hardening flags:
-- `WORKFLOW_AUTH_TOKEN_TTL_SECONDS` (defaults to `43200`, i.e. 12 hours)
-- `WORKFLOW_ALLOW_INSECURE_BEARER=false` (default). Set `true` only for short-lived local demos.
-
-The adapter auto-loads `backend/zkpassport-session-service/.env` and root `.env`
-when those files exist.
-
-Note: the adapter loads `ethers` from `RWA-House-UI/web/node_modules`, so run
-`cd RWA-House-UI/web && npm install` before starting the adapter service.
-
-### Recommended env for ZKPassport
-
-- `ZKPASSPORT_DOMAIN` (defaults to `demo.zkpassport.id`)
-- `ZKPASSPORT_SCOPE`
-- `ZKPASSPORT_DEV_MODE=true` for hackathon/demo mode
-- `ZKPASSPORT_VERIFY_WRITING_DIRECTORY=/tmp` (recommended in hosted/serverless environments)
-- Optional:
-  - `ZKPASSPORT_BRIDGE_URL`
-  - `ZKPASSPORT_CLOUD_PROVER_URL`
-  - `ZKPASSPORT_VALIDITY_SECONDS`
-
-### Frontend ZKPassport env (Vercel/web)
-
-- `VITE_ZKPASSPORT_API_URL` (backend verifier base URL)
-- `VITE_ZKPASSPORT_DOMAIN`
-- `VITE_ZKPASSPORT_SCOPE`
-- `VITE_ZKPASSPORT_DEV_MODE` (`true` for demo)
-- Optional branding:
-  - `VITE_ZKPASSPORT_APP_NAME`
-  - `VITE_ZKPASSPORT_APP_LOGO`
-  - `VITE_ZKPASSPORT_PURPOSE`
+- `VITE_ENABLE_PUBLIC_RPC_CANDIDATES=false`
 
 Vercel-safe flow used by this repo:
 1. Browser starts request with `@zkpassport/sdk`.
@@ -459,6 +416,9 @@ When users select **Choose to be anon**:
 When users select **Choose to KYC**:
 - UI re-enables `mock` / `zkpassport` routes and optional proof JSON flow
 - Existing KYC verification + write behavior is preserved
+
+The detailed adapter and verifier configuration lives in the service env files;
+the README only lists the frontend-facing values needed for demo wiring.
 
 Reference docs:
 - https://docs.zkpassport.id/api
