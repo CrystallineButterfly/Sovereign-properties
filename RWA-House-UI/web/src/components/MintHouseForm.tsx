@@ -6,7 +6,7 @@
 import React, { useState, useRef, useCallback, useMemo } from "react";
 import { useAuth } from "./AuthProvider";
 import { useUXMode } from "./UXModeProvider";
-import { apiClient } from "../../../shared/src/utils/api";
+import { apiClient } from "@shared/utils/api";
 import {
   fileToBase64,
   validateFileUpload,
@@ -15,8 +15,8 @@ import {
   MintFormSchema,
   generateKeyPair,
   exportPublicKey,
-} from "../../../shared/src/utils/security";
-import type { HouseMetadata, StorageType } from "../../../shared/src/types";
+} from "@shared/utils/security";
+import type { HouseMetadata, StorageType } from "@shared/types";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
@@ -494,7 +494,7 @@ export const MintHouseForm: React.FC = () => {
 
       // Submit to API
       const response = await apiClient.mintHouse(
-        payload as import("../../../shared/src/types").MintRequestPayload,
+        payload as import("@shared/types").MintRequestPayload,
       );
       setUploadProgress(100);
 

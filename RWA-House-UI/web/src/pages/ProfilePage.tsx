@@ -2,8 +2,8 @@ import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { useAuth } from "../components/AuthProvider";
 import { HouseThumbnail } from "../components/HouseThumbnail";
-import type { House } from "../../../shared/src/types";
-import { apiClient } from "../../../shared/src/utils/api";
+import type { House } from "@shared/types";
+import { apiClient } from "@shared/utils/api";
 
 const shortenAddress = (address: string): string =>
   `${address.slice(0, 6)}...${address.slice(-4)}`;

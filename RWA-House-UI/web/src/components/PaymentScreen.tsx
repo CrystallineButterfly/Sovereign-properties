@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { apiClient } from '../../../shared/src/utils/api';
+import { apiClient } from '@shared/utils/api';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUXMode } from './UXModeProvider';

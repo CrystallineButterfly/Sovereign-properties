@@ -2,12 +2,12 @@ import React, { useMemo, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import toast from "react-hot-toast";
 
-import { apiClient } from "../../../shared/src/utils/api";
-import type { BillType, CreateBillData } from "../../../shared/src/types";
+import { apiClient } from "@shared/utils/api";
+import type { BillType, CreateBillData } from "@shared/types";
 import {
   CreateBillSchema,
   sanitizeInput,
-} from "../../../shared/src/utils/security";
+} from "@shared/utils/security";
 import { useAuth } from "../components/AuthProvider";
 import { useUXMode } from "../components/UXModeProvider";
 

@@ -5,8 +5,8 @@ import toast from "react-hot-toast";
 import { useAuth } from "./AuthProvider";
 import { BrandMark } from "./BrandMark";
 import { useUXMode } from "./UXModeProvider";
-import { apiClient } from "../../../shared/src/utils/api";
-import type { Notification } from "../../../shared/src/types";
+import { apiClient } from "@shared/utils/api";
+import type { Notification } from "@shared/types";
 
 const NAV_ITEMS: Array<{ readonly to: string; readonly label: string }> = [
   { to: "/dashboard", label: "Dashboard" },

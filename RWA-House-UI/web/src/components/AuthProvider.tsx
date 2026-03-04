@@ -23,8 +23,8 @@ import {
 import { Link } from "react-router-dom";
 import { SiweMessage } from "siwe";
 import { ethers } from "ethers";
-import { AUTH_EXPIRED_EVENT_NAME, apiClient } from "../../../shared/src/utils/api";
-import type { User, PrivyUser, KYCStatus } from "../../../shared/src/types";
+import { AUTH_EXPIRED_EVENT_NAME, apiClient } from "@shared/utils/api";
+import type { User, PrivyUser, KYCStatus } from "@shared/types";
 import { BrandMark } from "./BrandMark";
 
 interface AuthContextType {
@@ -349,7 +349,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 }) => {
   // Validate Privy App ID
   if (!PRIVY_APP_ID) {
-    console.error("[AuthProvider] VITE_PRIVY_APP_ID is not set!");
+    console.error("[AuthProvider] Privy app is not configured.");
     return (
       <div
         style={{
@@ -365,19 +365,14 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       >
         <div style={{ textAlign: "center" }}>
           <h2>Configuration Error</h2>
-          <p>VITE_PRIVY_APP_ID is not set in your .env file</p>
+          <p>Privy app configuration is missing.</p>
           <p style={{ color: "#94a3b8", fontSize: "14px", marginTop: "10px" }}>
-            Please set your Privy App ID to continue
+            Please configure Privy to continue.
           </p>
         </div>
       </div>
     );
   }
-
-  console.log(
-    "[AuthProvider] Initializing with App ID:",
-    PRIVY_APP_ID.substring(0, 8) + "...",
-  );
 
   return (
     <PrivyLibProvider

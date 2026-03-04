@@ -10,14 +10,6 @@ if (!root) {
   throw new Error("Root element not found");
 }
 
-// Debug logging
-console.log("[main.tsx] Starting PropMeCRE web app...");
-console.log("[main.tsx] Environment:", {
-  VITE_PRIVY_APP_ID: import.meta.env.VITE_PRIVY_APP_ID ? "SET" : "NOT SET",
-  VITE_API_URL: import.meta.env.VITE_API_URL ? "SET" : "NOT SET",
-  NODE_ENV: import.meta.env.NODE_ENV,
-});
-
 // Bootstrap marker (helps debug blank screen issues)
 root.innerHTML =
   '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;background:#060b14;color:#dbeafe;font-family:Inter,sans-serif;flex-direction:column;"><div style="font-size:24px;margin-bottom:16px;">🏠</div><div>LOADING PROPMECRE...</div><div style="margin-top:10px;font-size:12px;color:#94a3b8;">Check browser console (F12) for errors</div></div>';
@@ -27,7 +19,6 @@ const apiUrl =
   import.meta.env.VITE_API_URL || import.meta.env.VITE_ZKPASSPORT_API_URL;
 if (typeof apiUrl === "string" && apiUrl.trim().length > 0) {
   apiClient.setBaseURL(apiUrl.trim());
-  console.log("[main.tsx] API URL configured:", apiUrl);
 }
 
 const zkPassportApiUrl = import.meta.env.VITE_ZKPASSPORT_API_URL;
@@ -36,7 +27,6 @@ if (
   zkPassportApiUrl.trim().length > 0
 ) {
   apiClient.setZKPassportBaseURL(zkPassportApiUrl.trim());
-  console.log("[main.tsx] ZKPassport API URL configured:", zkPassportApiUrl);
 }
 
 const houseAddress = import.meta.env.VITE_HOUSE_RWA_ADDRESS;
@@ -50,14 +40,7 @@ apiClient.setChainConfig({
   maxHouseScan: Number.isFinite(parsedMaxScan) ? parsedMaxScan : undefined,
 });
 
-console.log("[main.tsx] Chain config:", {
-  houseRWAAddress: houseAddress ? "SET" : "NOT SET",
-  rpcURL: rpcUrl ? "SET" : "NOT SET",
-  maxHouseScan: Number.isFinite(parsedMaxScan) ? parsedMaxScan : "default",
-});
-
 try {
-  console.log("[main.tsx] Rendering App with ErrorBoundary...");
   ReactDOM.createRoot(root).render(
     <React.StrictMode>
       <ErrorBoundary>
@@ -65,7 +48,6 @@ try {
       </ErrorBoundary>
     </React.StrictMode>,
   );
-  console.log("[main.tsx] App rendered successfully");
 } catch (err) {
   console.error("[main.tsx] CRASH:", err);
   const message = err instanceof Error ? err.message : String(err);

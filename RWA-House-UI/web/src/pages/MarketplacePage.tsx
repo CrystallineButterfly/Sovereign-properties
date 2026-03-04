@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 import { ethers } from "ethers";
 
-import { apiClient } from "../../../shared/src/utils/api";
-import type { House } from "../../../shared/src/types";
+import { apiClient } from "@shared/utils/api";
+import type { House } from "@shared/types";
 import {
   fileToBase64,
   validateDocumentContent,
   validateFileUpload,
-} from "../../../shared/src/utils/security";
+} from "@shared/utils/security";
 import { useAuth } from "../components/AuthProvider";
 import { HouseThumbnail } from "../components/HouseThumbnail";
 import { useUXMode } from "../components/UXModeProvider";

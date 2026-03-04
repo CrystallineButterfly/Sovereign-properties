@@ -11,12 +11,12 @@ import {
   apiClient,
   KYC_PROOF_STORAGE_KEY,
   KYC_PROVIDER_STORAGE_KEY,
-} from "../../../shared/src/utils/api";
+} from "@shared/utils/api";
 import type {
   House,
   KYCProvider,
   ZKPassportSession,
-} from "../../../shared/src/types";
+} from "@shared/types";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 

@@ -2,7 +2,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import toast from "react-hot-toast";
 import { useSearchParams } from "react-router-dom";
 
-import { apiClient } from "../../../shared/src/utils/api";
+import { apiClient } from "@shared/utils/api";
 import { useAuth } from "../components/AuthProvider";
 import { useUXMode } from "../components/UXModeProvider";
 import {

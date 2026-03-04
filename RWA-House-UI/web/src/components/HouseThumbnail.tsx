@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 
-import type { House } from "../../../shared/src/types";
+import type { House } from "@shared/types";
 
 const toRenderableImageUrl = (rawUrl: string): string => {
   const trimmed = rawUrl.trim();

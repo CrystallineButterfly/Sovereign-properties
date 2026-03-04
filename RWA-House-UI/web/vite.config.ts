@@ -22,7 +22,7 @@ export default defineConfig({
       },
       {
         find: '@shared',
-        replacement: path.resolve(__dirname, '../shared/src'),
+        replacement: path.resolve(__dirname, './src/shared'),
       },
       {
         find: 'zod',

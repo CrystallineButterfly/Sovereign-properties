@@ -4,7 +4,7 @@ import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import { ethers } from 'ethers';
 import { useAuth } from './AuthProvider';
 import { useUXMode } from './UXModeProvider';
-import { apiClient } from '../../../shared/src/utils/api';
+import { apiClient } from '@shared/utils/api';
 
 interface ListingFormProps {
   tokenId: string;

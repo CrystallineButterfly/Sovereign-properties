@@ -1,7 +1,7 @@
 import React, { useMemo, useState, useEffect, useRef } from "react";
 import { useAuth } from "./AuthProvider";
 import { useUXMode } from "./UXModeProvider";
-import { apiClient } from "../../../shared/src/utils/api";
+import { apiClient } from "@shared/utils/api";
 import {
   Client as XMTPClient,
   IdentifierKind,
@@ -13,7 +13,7 @@ import type {
   RentRequestPayload,
   ConversationSummary,
   ConversationDetails,
-} from "../../../shared/src/types";
+} from "@shared/types";
 import toast from "react-hot-toast";
 import { Link, useSearchParams } from "react-router-dom";
 import { ethers } from "ethers";
