@@ -1,0 +1,15 @@
+{
+  "name": "sovereign-properties",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "npm --prefix RWA-House-UI/web run build",
+    "dev": "npm --prefix RWA-House-UI/web run dev",
+    "preview": "npm --prefix RWA-House-UI/web run preview",
+    "typecheck": "npm --prefix RWA-House-UI/web run typecheck"
+  },
+  "engines": {
+    "node": "22.x",
+    "npm": ">=9.0.0"
+  }
+}
