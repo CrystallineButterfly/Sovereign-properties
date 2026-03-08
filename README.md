@@ -353,21 +353,6 @@ To use CRE-driven listing/price actions (`create_listing`), deploy a build that 
 
 ---
 
-## Local Run (fast path, local validation environment)
-
-```bash
-cd <repo-root>
-testing/scripts/run-anvil-cutover.sh
-```
-
-This local validation flow performs:
-- local Anvil deployment
-- CRE workflow simulation
-- env/config wiring
-- web build
-
----
-
 ## Web API Adapter (`/workflow/trigger` + ZKPassport)
 
 For hackathon demos, the web app uses
@@ -379,40 +364,12 @@ For hackathon demos, the web app uses
 - notification and private messaging sync
 - ZKPassport session + verification endpoints
 
-Start it with:
-
-```bash
-cd backend/zkpassport-session-service
-HOST=0.0.0.0 PORT=8787 CORS_ORIGIN="http://localhost:3000,http://127.0.0.1:3000,http://localhost:5173,http://127.0.0.1:5173" node server.cjs
-```
-
-Key endpoints:
-- `POST /workflow/trigger` (`mint`, `set_kyc`, `create_listing`, `sell`, `rent`, `create_bill`, `pay_bill`, `claim_key`)
-- `POST /rpc` (JSON-RPC proxy to configured Sepolia RPC; recommended for browser-safe onchain reads)
-- `POST /auth/verify-wallet`
-- `POST /auth/refresh`
-- `POST /auth/logout`
-- `GET /notifications`
-- `POST /messages/conversations`
-- `POST /kyc/zkpassport/verify` (frontend proof verification)
-- `POST /kyc/verify` (CRE-style verifier response)
-- `POST /kyc/zkpassport/session`
-- `GET /kyc/zkpassport/session/:sessionId`
-- `GET /healthz`
-
-For local frontend use, point the app at this adapter:
-
-- `VITE_API_URL=http://localhost:8787`
-- `VITE_ZKPASSPORT_API_URL=http://localhost:8787`
-- `VITE_RPC_URL=http://localhost:8787/rpc`
-- `VITE_ENABLE_CHAIN_RPC_FALLBACK=false` (recommended for hosted/browser deployments)
-- `VITE_ENABLE_PUBLIC_RPC_CANDIDATES=false`
-
 Vercel-safe flow used by this repo:
 1. Browser starts request with `@zkpassport/sdk`.
 2. Browser receives proof callback.
 3. Browser sends proof to backend `POST /kyc/zkpassport/verify`.
 4. Backend verifies proof and the frontend reuses that proof in CRE action payloads (`mint/create_listing/sell/rent`).
+5. Runs server for this on railwayZ
 
 This keeps CRE + smart-contract actions unchanged while making ZKPassport compatible with hosted frontends.
 
@@ -438,41 +395,6 @@ the README only lists the frontend-facing values needed for demo wiring.
 Reference docs:
 - https://docs.zkpassport.id/api
 - https://docs.zkpassport.id/getting-started
-
----
-
-## Sepolia Deploy (Production Path)
-
-From `contracts/evm/`:
-
-```bash
-export PRIVATE_KEY=0x...
-export SEPOLIA_RPC=https://<your-sepolia-rpc>
-export CRE_WORKFLOW_ADDRESS=0x...   # required
-export CRE_FORWARDER_ADDRESS=0x...  # required
-export FEE_RECIPIENT=0x...
-export ETHERSCAN_API_KEY=...   # optional, enables verification
-
-./deploy-sepolia.sh
-```
-
-What `deploy-sepolia.sh` does:
-- validates private key format
-- validates Sepolia chain ID (`11155111`)
-- enforces EIP-170 runtime size guard
-- runs `forge test -q`
-- broadcasts proxy + implementation + receiver deployment
-- writes deployment artifact to `contracts/evm/deployments/houserwa_11155111_*.json`
-
-### Temporary wallet flow (Foundry)
-
-```bash
-cast wallet new
-```
-
-Use the generated private key as `PRIVATE_KEY`, fund that address with Sepolia ETH from a faucet, then run `./deploy-sepolia.sh`.
-
----
 
 ## Repository Structure
 
