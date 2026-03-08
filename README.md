@@ -406,4 +406,5 @@ Reference docs:
 
 ## Video showcasing some features
 
-<div style="position: relative; padding-bottom: 56.25%; height: 0;"><iframe src="https://www.loom.com/embed/fe44062f788b408f9d4cecc326a29c75" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"></iframe></div>
+
+- [Link](https://www.loom.com/share/fe44062f788b408f9d4cecc326a29c75)
