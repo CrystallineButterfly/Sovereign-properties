@@ -22,7 +22,7 @@ This app supports private real-estate operations:
 ### Onchain
 - **Solidity + Foundry**
 - `HouseRWA` (UUPS proxy) + `HouseRWAReceiver`
-- Target network: **Sepolia** (live target), **Anvil** (local simulation)
+- ** Live on sepolia**
 
 ### Offchain workflow
 - **Chainlink CRE workflow** in Go
